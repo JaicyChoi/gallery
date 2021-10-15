@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+body{
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: #E5E5E5;
+}
+.hidden{
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    font-size: 0;
+    line-height: 0;
+}
+header{
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: #B7EF9D;
+}
+.header_bg_img{
+    position: absolute;
+    float: left;
+    width: 100%;
+    height: 100%;
+    background: url(../img/etc/etc5.png) no-repeat right;
+    background-size: contain;
+    mix-blend-mode: darken;
+    opacity: .85;
+}
+.header_wrapper{
+    position: relative;
+    float: left;
+    margin-top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+}
+.logo{
+    position: relative;
+    float: left;
+    width: 48px;
+    height: 48px;
+    font-family: 'Slabo 27px', serif;
+    font-size: 2.625em;
+}
+.logo a{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #298200;
+    text-decoration: none;
+}
+.logo_bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border: 2px solid #298200;
+    box-sizing: border-box;
+}
+.pc_nav{
+    position: relative;
+    float: right;
+    font-family: 'Elsie Swash Caps', cursive;
+    font-weight: 400;
+    font-size: 1em;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 400px;
+    height: 35px;
+}
+.main_menu{
+    position: relative;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.main_menu li{
+    position: relative;
+    float: left;
+    margin-right: 40px;
+    width: 100%;
+    text-align: center;
+}
+.main_menu li:last-child{
+    margin-right: 0;
+}
+.main_menu li:hover{
+    cursor: pointer;
+    font-weight: bold;
+}
+.main_menu li a{
+    color: black;
+    text-decoration: none;
+}
+.header_title{
+    position: relative;
+    float: left;
+    background-color: rgba(255, 255, 255, .55);
+    width: 600px;
+    height: 300px;
+    margin: 300px 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.header_title p{
+    font-family: 'Rock Salt', cursive;
+    font-size: 4em;
+    color: #298200;
+    line-height: 1.5em;
+    text-shadow: 0px 5px 4px white;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.header_title p:before{
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -15px;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: 2px solid transparent;
+    animation: title_line 1s linear forwards;
+    animation-delay: .5s;
+}
+/* .header_title p:hover:before{
+    animation: title_line 1s linear forwards;
+} */
+.header_title p:after{
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: 2px solid transparent;
+    animation: title_line_2 1s linear forwards;
+    animation-delay: 1.5s;
+}
+/* .header_title p:hover:after{
+    animation: title_line_2 1s linear forwards;
+    animation-delay: 1s;
+} */
+.contents{
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.classification{
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.classification_wrapper{
+    position: relative;
+    float: left;
+    width: 1200px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.classification_list{
+    position: relative;
+    float: left;
+    margin: 130px 0 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Elsie Swash Caps', cursive;
+    font-size: 1em;
+}
+.classification_list li{
+    position: relative;
+    float: left;
+    margin-right: 40px;
+    cursor: pointer;
+}
+.classification_list li:last-child{
+    margin-right: 0;
+}
+.classification_list li:hover{
+    color: #298200;
+}
+.works{
+    position: relative;
+    float: left;
+    width: 100%;
+    margin-bottom: 150px;
+}
+.works_wrapper{
+    position: relative;
+    float: left;
+    width: 1200px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.works_list{
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: blue;
+}
+.img_box{
+    position: relative;
+    float: left;
+    width: 350px;
+    height: 380px;
+    border: 1.5px solid #B7EF9D;
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.img_box:hover{
+    transform: translate(-7px, -5px);
+    box-shadow: 7px 5px 10px rgba(0, 0, 0, .35);
+}
+.img_box img{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    transition: all .3s ease;
+}
+.img_box img:hover{
+    transform: translateX(-50%) scale(1.05);
+}
+.works_list .all{}
+.works_list .ld{}
+.works_list .sd{}
+.works_list .etc{}
