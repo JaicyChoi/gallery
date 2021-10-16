@@ -1,3 +1,13 @@
+@keyframes nav_animation{
+    0%{
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 100%;
+    }
+}
 @keyframes title_line{
     0%{
         width: 0;

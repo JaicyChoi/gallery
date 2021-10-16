@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps:wght@400;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&display=swap');
 
 body{
     position: relative;
@@ -78,6 +79,9 @@ header{
     background-color: rgba(255, 255, 255, 0.5);
     width: 400px;
     height: 35px;
+    opacity: 0;
+    animation: nav_animation 1.7s linear;
+    animation-delay: 2.3s;
 }
 .main_menu{
     position: relative;
@@ -129,8 +133,15 @@ header{
     text-align: center;
     display: flex;
     align-items: center;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 1.5s ease;
 }
-.header_title p:before{
+.header_title p.show{
+    opacity: 100%;
+    transform: translateY(0);
+}
+.header_title:before{
     content: '';
     position: absolute;
     top: 10px;
@@ -139,13 +150,13 @@ header{
     height: 0;
     background: transparent;
     border: 2px solid transparent;
-    animation: title_line 1s linear forwards;
-    animation-delay: .5s;
+    animation: title_line 1.3s linear forwards;
+    animation-delay: 1s;
 }
-/* .header_title p:hover:before{
+/* .header_title:hover:before{
     animation: title_line 1s linear forwards;
 } */
-.header_title p:after{
+.header_title:after{
     content: '';
     position: absolute;
     top: -15px;
@@ -154,10 +165,10 @@ header{
     height: 0;
     background: transparent;
     border: 2px solid transparent;
-    animation: title_line_2 1s linear forwards;
-    animation-delay: 1.5s;
+    animation: title_line_2 1.3s linear forwards;
+    animation-delay: 2.3s;
 }
-/* .header_title p:hover:after{
+/* .header_title:hover:after{
     animation: title_line_2 1s linear forwards;
     animation-delay: 1s;
 } */
@@ -193,6 +204,10 @@ header{
     margin-right: 40px;
     cursor: pointer;
 }
+.selected{
+   font-weight: bold;
+   color: #298200;
+}
 .classification_list li:last-child{
     margin-right: 0;
 }
@@ -216,7 +231,11 @@ header{
     position: relative;
     float: left;
     width: 100%;
-    background-color: blue;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    row-gap: 60px;
+    column-gap: 60px;
+    justify-items: center;
 }
 .img_box{
     position: relative;
@@ -233,17 +252,54 @@ header{
     transform: translate(-7px, -5px);
     box-shadow: 7px 5px 10px rgba(0, 0, 0, .35);
 }
+.img_box:hover:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, .55);
+}
 .img_box img{
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    height: 100%;
+    top: 50%;
+    transform: translate(-50%, -40%);
+    height: 150%;
     transition: all .3s ease;
 }
 .img_box img:hover{
-    transform: translateX(-50%) scale(1.05);
+    transform: translate(-50%, -40%) scale(1.07);
 }
-.works_list .all{}
-.works_list .ld{}
-.works_list .sd{}
-.works_list .etc{}
+.works_list.all{ display: none; }
+.works_list.all.show{ display: grid; }
+.works_list.ld{ display: none; }
+.works_list.ld.show{ display: grid; }
+.works_list.sd{ display: none; }
+.works_list.sd.show{ display: grid; }
+.works_list.etc{ display: none; }
+.works_list.etc.show{ display: grid; }
+
+footer{
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: #A4A4A4;
+}
+.footer_wrapper{
+    position: relative;
+    float: left;
+    width: 1200px;
+    height: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.footer_wrapper p{
+    position: relative;
+    float: right;
+    font-family: 'Bilbo Swash Caps', cursive;
+    font-size: 1.25em;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: 0 0 5px black;
+}
