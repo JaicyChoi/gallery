@@ -1,3 +1,21 @@
+@keyframes logo_rotate{
+    0%{
+        transform: rotate(0g);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes title_bg{
+    0%{
+        transform: scale(0.5) translateX(-50%);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1) translateX(-50%);
+        opacity: 100%;
+    }  
+}
 @keyframes nav_animation{
     0%{
         transform: translateY(-20px);
@@ -6,6 +24,20 @@
     100%{
         transform: translateY(0);
         opacity: 100%;
+    }
+}
+@keyframes header_bg_img{
+    0%{
+        opacity: 0;
+        transform: translateX(3%)
+    }
+    80%{
+        opacity: 0;
+        transform: translateX(3%)
+    }
+    100%{
+        opacity: .85;
+        transform: translateX(0)
     }
 }
 @keyframes title_line{
@@ -59,4 +91,18 @@
         border-bottom-color: #298200;
         border-left-color: #298200;
     }
+}
+@keyframes top_btn_animation{
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-5px);
+    }
+    100%{
+        transform: translateY(5px);
+    }
+}
+@keyframes implode {
+    100% {transform: scale(0)}
 }

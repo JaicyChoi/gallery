@@ -9,6 +9,11 @@ body{
     width: 100%;
     background-color: #E5E5E5;
 }
+body.scolllock{
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.7);
+}
 .hidden{
     width: 1px;
     height: 1px;
@@ -20,7 +25,11 @@ header{
     position: relative;
     float: left;
     width: 100%;
+    overflow: hidden;
     background-color: #B7EF9D;
+}
+header.scrolllock{
+    height: 100vh;
 }
 .header_bg_img{
     position: absolute;
@@ -31,6 +40,7 @@ header{
     background-size: contain;
     mix-blend-mode: darken;
     opacity: .85;
+    animation: header_bg_img 6s linear;
 }
 .header_wrapper{
     position: relative;
@@ -69,6 +79,9 @@ header{
     border: 2px solid #298200;
     box-sizing: border-box;
 }
+.logo_bg.rotate{
+    animation: logo_rotate 2s linear infinite;
+}
 .pc_nav{
     position: relative;
     float: right;
@@ -81,7 +94,10 @@ header{
     height: 35px;
     opacity: 0;
     animation: nav_animation 1.7s linear;
-    animation-delay: 2.3s;
+    animation-delay: 3.3s;
+}
+.pc_nav.show{
+    opacity: 100%;
 }
 .main_menu{
     position: relative;
@@ -121,6 +137,11 @@ header{
     margin: 300px 0;
     left: 50%;
     transform: translateX(-50%);
+    transition: all 3s ease;
+    animation: title_bg .7s ease-in-out;
+}
+.header_title.hide{
+    opacity: 0;
 }
 .header_title p{
     font-family: 'Rock Salt', cursive;
@@ -172,10 +193,92 @@ header{
     animation: title_line_2 1s linear forwards;
     animation-delay: 1s;
 } */
+.about_wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .70);
+/*     display: none; */
+    opacity: 0;
+    transition: all 1.5s ease-in-out;
+    z-index: -1;
+}
+.about_wrapper.show{
+    z-index: 0;
+    opacity: 100%;
+}
+.about{
+    position: relative;
+    float: left;
+    width: 1200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+.about.show{
+    transform: translate(-50%, -50%);
+    opacity: 100%;
+}
+.text_box{
+    position: relative;
+    float: left;
+    font-family: 'Elsie Swash Caps', cursive;
+    color: white;
+    width: 700px;
+    text-align: center;
+}
+.about_title{
+    font-size: 4em;
+    font-weight: bold;
+}
+.profile_img{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 120px;
+    margin: 20px 0 50px 0;
+}
+.profile_img img{
+    height: 100%;
+}
+.nickname{
+    position: relative;
+    float: left;
+    width: 100%;
+    font-size: 2.875em;
+    margin-bottom: 75px;
+}
+.introduce{
+    position: relative;
+    float: left;
+    font-size: 2.875em;
+    line-height: 1.2em;
+}
+.return{
+    position: absolute;
+    float: left;
+    width: 1200px;
+    left: 50%;
+    height: 70px;
+    margin-top: 50px;
+    transform: translateX(-50%);
+}
+.return_arrow{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    cursor: pointer;
+}
 .contents{
     position: relative;
     float: left;
     width: 100%;
+    background: rgb(205,205,205);
+    background: linear-gradient(0deg, rgba(205,205,205,1) 0%, rgba(242,242,242,1) 45%, rgba(252,252,252,1) 90%, rgba(201,251,178,1) 100%);
 }
 .classification{
     position: relative;
@@ -227,6 +330,16 @@ header{
     left: 50%;
     transform: translateX(-50%);
 }
+.total{
+    position: relative;
+    float: left;
+    text-align: right;
+    margin-bottom: 20px;
+    font-style: italic;
+    width: 100%;
+    font-size: 1em;
+    font-family: 'Slabo 27px', serif;
+}
 .works_list{
     position: relative;
     float: left;
@@ -266,9 +379,10 @@ header{
     transform: translate(-50%, -40%);
     height: 150%;
     transition: all .3s ease;
+    z-index: 1;
 }
-.img_box img:hover{
-    transform: translate(-50%, -40%) scale(1.07);
+.img_box>img:hover{
+    transform: translate(-50%, -40%) scale(1.05);
 }
 .works_list.all{ display: none; }
 .works_list.all.show{ display: grid; }
@@ -278,7 +392,33 @@ header{
 .works_list.sd.show{ display: grid; }
 .works_list.etc{ display: none; }
 .works_list.etc.show{ display: grid; }
-
+.top_btn_wrapper{
+    position: fixed;
+    float: left;
+    bottom: 150px;
+    width: 1350px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.7s ease;
+}
+.top_btn_wrapper.show{
+    opacity: 100%;
+}
+.top_btn{
+    position: absolute;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: url(../img/icon/top_arrow.png) no-repeat center;
+    background-size: 35px;
+    background-color: #298200;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.top_btn:hover{
+    animation: top_btn_animation 0.7s linear infinite;
+}
 footer{
     position: relative;
     float: left;
@@ -302,4 +442,16 @@ footer{
     top: 50%;
     transform: translateY(-50%);
     text-shadow: 0 0 5px black;
+}
+.ball {
+    pointer-events: none;
+    position: absolute; 
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; 
+    background: gray;
+    animation: implode 1s ease-in-out;
+    animation-fill-mode: both;
+    opacity: .15;
+    transition: all .5s ease;
 }

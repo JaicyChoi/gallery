@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/keyframes.css">
     <link rel="stylesheet" href="css/media_screen.css">
     <link rel="shortcut icon" href="ico/logo.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Gallery</title>
 </head>
 <body>
@@ -28,7 +29,23 @@
                 </ul>
             </nav>
             <div class="header_title">
+                <div class="header_title_bg"></div>
                 <p>Guiltine’s Gallery</p>
+            </div>
+        </div>
+        <div class="about_wrapper">
+            <div class="about">
+                <div class="text_box">
+                    <p class="about_title">About</p>
+                    <div class="profile_img">
+                        <img src="img/profile.png" alt="profile image">
+                    </div>
+                    <p class="nickname">Guiltine(mia)</p>
+                    <p class="introduce">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae aliquet ipsum. Cras sit amet purus at neque facilisis vehicula.</p>
+                </div>
+            </div>
+            <div class="return">
+                <img class="return_arrow" src="img/icon/back_arrow.png" alt="return to main page">
             </div>
         </div>
     </header>
@@ -47,10 +64,14 @@
         <section class="works">
             <h2 class="hidden">works</h2>
             <div class="works_wrapper">
+                <p class="total"></p>
                 <div class="works_list all"></div>
                 <div class="works_list ld"></div>
                 <div class="works_list sd"></div>
                 <div class="works_list etc"></div>
+            </div>
+            <div class="top_btn_wrapper">
+                <div class="top_btn"></div>
             </div>
         </section>
     </div>
