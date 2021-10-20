@@ -16,7 +16,7 @@ const list_etc = document.querySelector('.etc');
 let total = document.querySelector('.total');
 let ld_cnt = 8;
 let sd_cnt = 6;
-let etc_cnt = 6;
+let etc_cnt = 7;
 let etc_cnt2 = 2;
 let gif_cnt = 2;
 let all_etc_cnt = etc_cnt + etc_cnt2 + gif_cnt;
@@ -73,7 +73,7 @@ function count_ld(list){
     
         let img = document.createElement('img');
         img.src='img/ld/ld'+ (i+1)+'.png';
-        img.alt='ld image'+ (i+1);
+        img.alt='ld'+ (i+1);
     
         img_box.appendChild(img);
         list.appendChild(img_box);
@@ -87,7 +87,7 @@ function count_sd(list){
     
         let img = document.createElement('img');
         img.src='img/sd/sd'+ (i+1)+'.png';
-        img.alt='sd image'+ (i+1);
+        img.alt='sd'+ (i+1);
     
         img_box.appendChild(img);
         list.appendChild(img_box);
@@ -101,7 +101,7 @@ function count_etc(list){
     
         let img = document.createElement('img');
         img.src='img/etc/etc'+ (i+1)+'.png';
-        img.alt='etc image'+ (i+1);
+        img.alt='etc'+ (i+1);
     
         img_box.appendChild(img);
         list.appendChild(img_box);
@@ -113,7 +113,7 @@ function count_etc(list){
     
         let img = document.createElement('img');
         img.src='img/etc/etc'+ i+'.gif';
-        img.alt='etc image'+ i;
+        img.alt='etc'+ i;
     
         img_box.appendChild(img);
         list.appendChild(img_box);
@@ -125,14 +125,14 @@ function count_etc(list){
     
         let img = document.createElement('img');
         img.src='img/etc/etc'+ i+'.png';
-        img.alt='etc image'+ i;
+        img.alt='etc'+ i;
     
         img_box.appendChild(img);
         list.appendChild(img_box);
     }
 }
 //show total
-total.innerHTML = 'total : ' + all_cnt;
+total.innerHTML = 'Total : ' + all_cnt;
 
 //classification controll
 classification_list[0].addEventListener('click', ()=>{
@@ -145,7 +145,7 @@ classification_list[0].addEventListener('click', ()=>{
     classification_list[2].classList.remove('selected');
     classification_list[3].classList.remove('selected');
     classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
-    total.innerHTML = 'total : ' + all_cnt;
+    total.innerHTML = 'Total : ' + all_cnt;
 });
 classification_list[1].addEventListener('click', ()=>{
     list_all.classList.remove('show');
@@ -157,7 +157,7 @@ classification_list[1].addEventListener('click', ()=>{
     classification_list[2].classList.remove('selected');
     classification_list[3].classList.remove('selected');
     classification_list_after.innerHTML = '.classification_list li:nth-child(2):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
-    total.innerHTML = 'total : ' + ld_cnt;
+    total.innerHTML = 'Total : ' + ld_cnt;
 });
 classification_list[2].addEventListener('click', ()=>{
     list_all.classList.remove('show');
@@ -169,7 +169,7 @@ classification_list[2].addEventListener('click', ()=>{
     classification_list[2].classList.add('selected');
     classification_list[3].classList.remove('selected');
     classification_list_after.innerHTML = '.classification_list li:nth-child(3):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
-    total.innerHTML = 'total : ' + sd_cnt;
+    total.innerHTML = 'Total : ' + sd_cnt;
 });
 classification_list[3].addEventListener('click', ()=>{
     list_all.classList.remove('show');
@@ -181,7 +181,7 @@ classification_list[3].addEventListener('click', ()=>{
     classification_list[2].classList.remove('selected');
     classification_list[3].classList.add('selected');
     classification_list_after.innerHTML = '.classification_list li:nth-child(4):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
-    total.innerHTML = 'total : ' + all_etc_cnt;
+    total.innerHTML = 'Total : ' + all_etc_cnt;
 });
 
 //top button controll
@@ -202,6 +202,39 @@ window.addEventListener('scroll', function(){
 top_btn.addEventListener('click', function(){
     document.querySelector('header').scrollIntoView({behavior:'smooth'});
 });
+
+//view images
+const view_image_wrapper = document.querySelector('.view_image_wrapper');
+const view_img_box = document.querySelector('.view_img_box');
+const artworks = document.querySelectorAll('.img_box');
+const work_date = document.querySelector('.work_date');
+const return_works = document.querySelector('.return_works');
+const dark_bg = document.querySelector('.dark_bg');
+const return_bg = document.querySelector('.return_bg');
+
+artworks.forEach( img => img.addEventListener('click', () => {
+    let zoom_img = document.createElement('img');
+    zoom_img.src = img.children[0].src;
+    zoom_img.alt = img.children[0].alt;
+
+    view_img_box.appendChild(zoom_img);
+    view_image_wrapper.classList.add('show');
+    document.querySelector('body').classList.add('scrolllock');
+    dark_bg.classList.add('show');
+    return_works.classList.add('show');
+    return_bg.classList.add('show');
+}));
+return_works.addEventListener('click', return_gallery );
+return_bg.addEventListener('click', return_gallery );
+
+function return_gallery(){
+    document.querySelector('body').classList.remove('scrolllock');
+    return_works.classList.remove('show');
+    dark_bg.classList.remove('show');
+    view_img_box.removeChild(view_img_box.children[0]);
+    view_image_wrapper.classList.remove('show');
+    return_bg.classList.remove('show');
+}
 
 //mouse indicator
 $(document).ready(function(){

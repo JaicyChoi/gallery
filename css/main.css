@@ -9,7 +9,8 @@ body{
     width: 100%;
     background-color: #E5E5E5;
 }
-body.scolllock{
+body::-webkit-scrollbar{ display: none; }
+body.scrolllock{
     height: 100%;
     overflow: hidden;
     background-color: rgba(0,0,0,0.7);
@@ -36,7 +37,7 @@ header.scrolllock{
     float: left;
     width: 100%;
     height: 100%;
-    background: url(../img/etc/etc5.png) no-repeat right;
+    background: url(../img/etc/etc6.png) no-repeat right;
     background-size: contain;
     mix-blend-mode: darken;
     opacity: .85;
@@ -278,8 +279,18 @@ header.scrolllock{
     float: left;
     width: 100%;
     background: rgb(205,205,205);
-    background: linear-gradient(0deg, rgba(205,205,205,1) 0%, rgba(242,242,242,1) 45%, rgba(252,252,252,1) 90%, rgba(201,251,178,1) 100%);
+background: linear-gradient(360deg, rgba(205,205,205,1) 0%, rgba(242,242,242,1) 45%, rgba(252,252,252,1) 55%, rgba(207,255,185,1) 100%);
 }
+/* .contents:after{
+    content: '';
+    position: absolute;
+    float: left;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+} */
 .classification{
     position: relative;
     float: left;
@@ -336,6 +347,7 @@ header.scrolllock{
     text-align: right;
     margin-bottom: 20px;
     font-style: italic;
+    font-weight: bold;
     width: 100%;
     font-size: 1em;
     font-family: 'Slabo 27px', serif;
@@ -363,14 +375,15 @@ header.scrolllock{
 }
 .img_box:hover{
     transform: translate(-7px, -5px);
-    box-shadow: 7px 5px 10px rgba(0, 0, 0, .35);
+    box-shadow: 7px 5px 10px rgba(0, 0, 0, .5);
 }
 .img_box:hover:after{
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, .55);
+    background-color: rgba(255, 255, 255, .5);
+    z-index: 1;
 }
 .img_box img{
     position: absolute;
@@ -401,6 +414,69 @@ header.scrolllock{
     transform: translateX(-50%);
     opacity: 0;
     transition: all 0.7s ease;
+}
+.view_image_wrapper{
+    position: fixed;
+    float: left;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+.view_image_wrapper.show{
+    z-index: 2;
+}
+.view_img{
+    position: relative;
+    float: left;
+    width: 1200px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.view_img_box{
+    position: relative;
+    height: 80vh;
+    width: 100%;
+}
+.view_img_box img{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+}
+.work_date{
+    position: relative;
+    float: left;
+    color: white;
+    font-family: 'Slabo 27px', serif;
+    font-size: 1.125em;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    letter-spacing: .5px;
+}
+.return_works{
+    position: fixed;
+    top: 50px;
+    float: left;
+    width: 1200px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+.return_works.show{
+    display: block;
+    z-index: 3;
+}
+.return_arrow2{
+    position: relative;
+    float: right;
+    height: 70px;
+    cursor: pointer;
 }
 .top_btn_wrapper.show{
     opacity: 100%;
@@ -443,6 +519,33 @@ footer{
     transform: translateY(-50%);
     text-shadow: 0 0 5px black;
 }
+.dark_bg{
+    position: absolute;
+    float: left;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: -1;
+}
+.dark_bg.show{
+    z-index: 1;
+}
+.return_bg{
+    position: absolute;
+    float: left;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 2;
+    display: none;
+}
+.return_bg.show{
+    display: block;
+}
 .ball {
     pointer-events: none;
     position: absolute; 
@@ -454,4 +557,5 @@ footer{
     animation-fill-mode: both;
     opacity: .15;
     transition: all .5s ease;
+    z-index: 2;
 }
