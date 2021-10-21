@@ -28,7 +28,8 @@ header{
     width: 100%;
     overflow: hidden;
     background-color: #B7EF9D;
-    background-color: #000e01;
+    background: rgb(0,0,0);
+    background: linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,14,1,1) 55%);
 }
 header.dark{
     background-color: #000e01;
@@ -551,7 +552,7 @@ header.scrolllock{
 }
 .return_works{
     position: fixed;
-    top: 50px;
+    top: 30px;
     float: left;
     width: 1200px;
     left: 50%;
@@ -565,7 +566,7 @@ header.scrolllock{
 .return_arrow2{
     position: relative;
     float: right;
-    height: 70px;
+    height: 50px;
     cursor: pointer;
 }
 .top_btn_wrapper.show{
