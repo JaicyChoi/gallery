@@ -623,6 +623,10 @@ footer.dark{
     background: url(../img/graha.png) no-repeat center;
     background-size: cover;
 }
+.made_by{
+    font-weight: bold;
+    color: #ff4242;
+}
 .dark_bg{
     position: absolute;
     float: left;
