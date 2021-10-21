@@ -3,7 +3,9 @@ const logo_bg = document.querySelector('.logo_bg');
 const pc_nav = document.querySelector('.pc_nav');
 const main_menu = document.querySelectorAll('.main_menu>li');
 const header_title = document.querySelector('.header_title');
-const title = document.querySelector('.header_title>p');
+const title = document.querySelector('.header_title_bg>p');
+const dark = document.querySelector('.dark');
+const light = document.querySelector('.light');
 const about_wrapper = document.querySelector('.about_wrapper');
 const about = document.querySelector('.about');
 const return_arrow = document.querySelector('.return>img');
@@ -13,8 +15,11 @@ const list_all = document.querySelector('.all');
 const list_ld = document.querySelector('.ld');
 const list_sd = document.querySelector('.sd');
 const list_etc = document.querySelector('.etc');
+let styleEle = document.createElement('style');
+styleEle.id = "keyset";
+document.head.appendChild(styleEle);
 let total = document.querySelector('.total');
-let ld_cnt = 8;
+let ld_cnt = 9;
 let sd_cnt = 6;
 let etc_cnt = 7;
 let etc_cnt2 = 2;
@@ -33,6 +38,17 @@ list_all.classList.add('show');
 classification_list[0].classList.add('selected');
 let classification_list_after = document.head.appendChild(document.createElement('style'));
 classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+
+//mode controll
+light.classList.add('show');
+dark.addEventListener('click', () => {
+    dark.classList.remove('show');
+    light.classList.add('show');
+});
+light.addEventListener('click', () => {
+    dark.classList.add('show');
+    light.classList.remove('show');
+});
 
 //show about
 main_menu[0].addEventListener('click', () => {
@@ -146,6 +162,7 @@ classification_list[0].addEventListener('click', ()=>{
     classification_list[3].classList.remove('selected');
     classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
     total.innerHTML = 'Total : ' + all_cnt;
+    set_star_animation();
 });
 classification_list[1].addEventListener('click', ()=>{
     list_all.classList.remove('show');
@@ -158,6 +175,7 @@ classification_list[1].addEventListener('click', ()=>{
     classification_list[3].classList.remove('selected');
     classification_list_after.innerHTML = '.classification_list li:nth-child(2):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
     total.innerHTML = 'Total : ' + ld_cnt;
+    set_star_animation();
 });
 classification_list[2].addEventListener('click', ()=>{
     list_all.classList.remove('show');
@@ -170,6 +188,7 @@ classification_list[2].addEventListener('click', ()=>{
     classification_list[3].classList.remove('selected');
     classification_list_after.innerHTML = '.classification_list li:nth-child(3):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
     total.innerHTML = 'Total : ' + sd_cnt;
+    set_star_animation();
 });
 classification_list[3].addEventListener('click', ()=>{
     list_all.classList.remove('show');
@@ -182,6 +201,7 @@ classification_list[3].addEventListener('click', ()=>{
     classification_list[3].classList.add('selected');
     classification_list_after.innerHTML = '.classification_list li:nth-child(4):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
     total.innerHTML = 'Total : ' + all_etc_cnt;
+    set_star_animation();
 });
 
 //top button controll
@@ -207,6 +227,7 @@ top_btn.addEventListener('click', function(){
 const view_image_wrapper = document.querySelector('.view_image_wrapper');
 const view_img_box = document.querySelector('.view_img_box');
 const artworks = document.querySelectorAll('.img_box');
+const artworks_each = document.querySelectorAll('.img_box>img');
 const work_date = document.querySelector('.work_date');
 const return_works = document.querySelector('.return_works');
 const dark_bg = document.querySelector('.dark_bg');
@@ -217,6 +238,12 @@ artworks.forEach( img => img.addEventListener('click', () => {
     zoom_img.src = img.children[0].src;
     zoom_img.alt = img.children[0].alt;
 
+    let number = Number(img.children[0].alt.replace(/[^0-9]/g,''));
+    let sort = img.children[0].alt.replace(/[0-9]/g,'');
+    if( sort === 'ld' ) work_date.innerHTML = DATE.ld[number-1];
+    if( sort === 'sd' ) work_date.innerHTML = DATE.sd[number-1];
+    if( sort === 'etc' ) work_date.innerHTML = DATE.etc[number-1];
+
     view_img_box.appendChild(zoom_img);
     view_image_wrapper.classList.add('show');
     document.querySelector('body').classList.add('scrolllock');
@@ -224,6 +251,14 @@ artworks.forEach( img => img.addEventListener('click', () => {
     return_works.classList.add('show');
     return_bg.classList.add('show');
 }));
+//need fixing
+artworks_each.forEach( img => img.addEventListener('mouseover', () => {
+    img.classList.add('hover');
+}));
+artworks_each.forEach( img => img.addEventListener('mouseout', () => {
+    img.classList.remove('hover');
+}));
+
 return_works.addEventListener('click', return_gallery );
 return_bg.addEventListener('click', return_gallery );
 
@@ -235,6 +270,63 @@ function return_gallery(){
     view_image_wrapper.classList.remove('show');
     return_bg.classList.remove('show');
 }
+
+//random star background
+const star_bg = document.querySelector('.star_bg');
+function star(){
+    let generate_star = 0;
+    for( let cnt = 500 ; generate_star < cnt ; generate_star++ ){
+        let star = document.createElement('div');
+        star.classList.add('star');
+
+        let x = Math.floor( Math.random() * window.innerWidth );
+        let size = Math.random() * 2;
+        let duration = 15 * Math.random();
+
+        star.style.left = x + 'px';
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        star.style.animationDuration = 15 + duration + 's';
+        star.style.animationDelay = duration + 's';
+
+        star_bg.append(star);
+    }
+}
+set_star_animation();
+
+function set_star_animation(){
+    styleEle.innerHTML = `
+    @keyframes starAnimate{
+         0%{
+             opacity: 0;
+             transform:translateY(` + -(document.body.offsetHeight+200) + `px);
+            }
+        10%, 90%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+            ransform: translateY(0);
+        }
+    .star{
+        position: absolute;
+        bottom: 0;
+        animation: starAnimate linear infinite;
+        background-color: white;
+        opacity: 0;
+    }
+    `;
+}
+
+window.addEventListener('resize', () => {
+    while( star_bg.hasChildNodes() ){
+        star_bg.removeChild(star_bg.firstChild);
+    }
+
+    star();
+});
+
+star();
 
 //mouse indicator
 $(document).ready(function(){

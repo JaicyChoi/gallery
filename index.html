@@ -9,10 +9,17 @@
     <link rel="stylesheet" href="css/keyframes.css">
     <link rel="stylesheet" href="css/media_screen.css">
     <link rel="shortcut icon" href="ico/logo.ico">
+    <script src="js/DATE.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        window.onbeforeunload = function() {
+    		window.scrollTo(0, 0);
+    	};
+        </script>	
     <title>Gallery</title>
 </head>
 <body>
+    <div class="star_bg"></div>
     <header>
         <div class="header_bg_img"></div>
         <div class="header_wrapper">
@@ -29,8 +36,15 @@
                 </ul>
             </nav>
             <div class="header_title">
-                <div class="header_title_bg"></div>
-                <p>Guiltine’s Gallery</p>
+                <div class="header_title_bg">
+                    <p>Guiltine’s Gallery</p>
+                </div>
+            </div>
+            <div class="view_mode_wrapper">
+                <div class="change_mode">
+                    <p class="dark">view dark mode</p>
+                    <p class="light">view light mode</p>
+                </div>
             </div>
         </div>
         <div class="about_wrapper">
@@ -50,6 +64,7 @@
         </div>
     </header>
     <div class="contents">
+        <!-- <div class="star_bg"></div> -->
         <section class="classification">
             <h2 class="hidden">classification</h2>
             <div class="classification_wrapper">
@@ -73,7 +88,7 @@
             <div class="view_image_wrapper">
                 <div class="view_img">
                     <div class="view_img_box"></div>
-                    <p class="work_date">09. 29. 2021</p>
+                    <p class="work_date"></p>
                 </div>
             </div>
             <div class="top_btn_wrapper">

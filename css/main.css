@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps:wght@400;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 body{
     position: relative;
@@ -28,6 +28,10 @@ header{
     width: 100%;
     overflow: hidden;
     background-color: #B7EF9D;
+    background-color: #000e01;
+}
+header.dark{
+    background-color: #000e01;
 }
 header.scrolllock{
     height: 100vh;
@@ -38,10 +42,18 @@ header.scrolllock{
     width: 100%;
     height: 100%;
     background: url(../img/etc/etc6.png) no-repeat right;
-    background-size: contain;
     mix-blend-mode: darken;
+    
+    background: url(../img/main_bg_dark.png) no-repeat right;
+    mix-blend-mode: exclusion;
+   
+    background-size: contain;
     opacity: .85;
     animation: header_bg_img 6s linear;
+}
+.header_bg_img.dark{
+    mix-blend-mode: exclusion;
+    background: url(../img/main_bg_dark.png) no-repeat right;
 }
 .header_wrapper{
     position: relative;
@@ -91,11 +103,15 @@ header.scrolllock{
     font-size: 1em;
     color: black;
     background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, .75);
     width: 400px;
     height: 35px;
     opacity: 0;
     animation: nav_animation 1.7s linear;
     animation-delay: 3.3s;
+}
+.pc_nav.dark{
+    background-color: rgba(255, 255, 255, .75);
 }
 .pc_nav.show{
     opacity: 100%;
@@ -132,24 +148,35 @@ header.scrolllock{
 .header_title{
     position: relative;
     float: left;
-    background-color: rgba(255, 255, 255, .55);
-    width: 600px;
-    height: 300px;
-    margin: 300px 0;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    margin-top: 300px;
     transition: all 3s ease;
-    animation: title_bg .7s ease-in-out;
 }
 .header_title.hide{
     opacity: 0;
 }
-.header_title p{
-    font-family: 'Rock Salt', cursive;
-    font-size: 4em;
+.header_title_bg{
+    position: relative;
+    float: left;
+    background-color: rgba(255, 255, 255, .55);
+    background-color: rgba(255, 255, 255, .3);
+    width: 600px;
+    height: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: title_bg .7s ease-in-out;
+}
+.header_title_bg.dark{
+    background-color: rgba(255, 255, 255, .3);
+}
+.header_title_bg p{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 7.5em;
     color: #298200;
-    line-height: 1.5em;
+    color: #B7EF9D;
+    line-height: 0.9em;
     text-shadow: 0px 5px 4px white;
+    text-shadow: 0px 5px 4px #298200;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -159,11 +186,15 @@ header.scrolllock{
     transform: translateY(-30px);
     transition: all 1.5s ease;
 }
-.header_title p.show{
+.header_title_bg p.dark{
+    color: #B7EF9D;
+    text-shadow: 0px 5px 4px #298200;
+}
+.header_title_bg p.show{
     opacity: 100%;
     transform: translateY(0);
 }
-.header_title:before{
+.header_title_bg:before{
     content: '';
     position: absolute;
     top: 10px;
@@ -178,7 +209,7 @@ header.scrolllock{
 /* .header_title:hover:before{
     animation: title_line 1s linear forwards;
 } */
-.header_title:after{
+.header_title_bg:after{
     content: '';
     position: absolute;
     top: -15px;
@@ -194,6 +225,64 @@ header.scrolllock{
     animation: title_line_2 1s linear forwards;
     animation-delay: 1s;
 } */
+.view_mode_wrapper{
+    position: relative;
+    float: left;
+    width: 100%;
+    margin-bottom: 300px;
+    margin-top: 18px;
+}
+.change_mode{
+    position: relative;
+    float: left;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Slabo 27px', serif;
+    font-size: 1em;
+    width: 135px;
+    height: 35px;
+    cursor: pointer;
+}
+.dark{
+    position: absolute;
+    float: left;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #243224;
+    color: white;
+    border-radius: 17.5px;
+    transition: all .3s ease-in-out;
+    visibility: hidden;
+}
+.dark.show{
+    visibility: visible;
+}
+.dark:hover{
+    box-shadow: 7px 7px 0 0 rgba(0, 0, 0, 0.35); 
+}
+.light{
+    position: absolute;
+    float: left;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 17.5px;
+    color: black;
+    transition: all .3s ease-in-out;
+    visibility: hidden;
+}
+.light.show{
+    visibility: visible;
+}
+.light:hover{
+    box-shadow: 7px 7px 0 0 rgba(255, 255, 255, 0.35);
+}
 .about_wrapper{
     position: absolute;
     width: 100%;
@@ -279,18 +368,14 @@ header.scrolllock{
     float: left;
     width: 100%;
     background: rgb(205,205,205);
-background: linear-gradient(360deg, rgba(205,205,205,1) 0%, rgba(242,242,242,1) 45%, rgba(252,252,252,1) 55%, rgba(207,255,185,1) 100%);
+    background: linear-gradient(360deg, rgba(205,205,205,1) 0%, rgba(242,242,242,1) 45%, rgba(252,252,252,1) 55%, rgba(207,255,185,1) 100%);
+    background: rgb(127,153,115);
+    background: linear-gradient(360deg, rgba(127,153,115,1) 0%, rgba(0,0,0,1) 100%);
 }
-/* .contents:after{
-    content: '';
-    position: absolute;
-    float: left;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .7);
-} */
+.contents.dark{
+    background: rgb(127,153,115);
+    background: linear-gradient(360deg, rgba(127,153,115,1) 0%, rgba(0,0,0,1) 100%);
+}
 .classification{
     position: relative;
     float: left;
@@ -311,6 +396,10 @@ background: linear-gradient(360deg, rgba(205,205,205,1) 0%, rgba(242,242,242,1) 
     transform: translateX(-50%);
     font-family: 'Elsie Swash Caps', cursive;
     font-size: 1em;
+    color: white;
+}
+.classification_list.dark{
+    color: white;
 }
 .classification_list li{
     position: relative;
@@ -375,7 +464,8 @@ background: linear-gradient(360deg, rgba(205,205,205,1) 0%, rgba(242,242,242,1) 
 }
 .img_box:hover{
     transform: translate(-7px, -5px);
-    box-shadow: 7px 5px 10px rgba(0, 0, 0, .5);
+    box-shadow: 10px 7px 10px rgba(0, 0, 0, .5);
+    box-shadow: 10px 7px 10px rgba(183, 239, 157, .5);
 }
 .img_box:hover:after{
     content: '';
@@ -394,8 +484,8 @@ background: linear-gradient(360deg, rgba(205,205,205,1) 0%, rgba(242,242,242,1) 
     transition: all .3s ease;
     z-index: 1;
 }
-.img_box>img:hover{
-    transform: translate(-50%, -40%) scale(1.05);
+.img_box img.hover{
+    transform: translate(-50%, -40%) scale(1.07);
 }
 .works_list.all{ display: none; }
 .works_list.all.show{ display: grid; }
@@ -500,6 +590,10 @@ footer{
     float: left;
     width: 100%;
     background-color: #A4A4A4;
+    background-color: #000e01;
+}
+footer.dark{
+    background-color: #000e01;
 }
 .footer_wrapper{
     position: relative;
@@ -518,6 +612,16 @@ footer{
     top: 50%;
     transform: translateY(-50%);
     text-shadow: 0 0 5px black;
+}
+.footer_wrapper p:before{
+    content: '';
+    position: absolute;
+    left: -50px;
+    top: -13px;
+    width: 45px;
+    height: 45px;
+    background: url(../img/graha.png) no-repeat center;
+    background-size: cover;
 }
 .dark_bg{
     position: absolute;
@@ -556,6 +660,37 @@ footer{
     animation: implode 1s ease-in-out;
     animation-fill-mode: both;
     opacity: .15;
+    opacity: .35;
     transition: all .5s ease;
     z-index: 2;
+}
+.ball{
+    opacity: .35;
+}
+.star_bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.star_bg:after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+}
+.star{
+    position: absolute;
+    bottom: 0;
+/*     width: 1px;
+    height: 1px; */
+    animation: starAnimate linear infinite;
+    background-color: white;
+    opacity: 0;
+    z-index: 1;
 }
