@@ -1,20 +1,24 @@
+const header = document.querySelector('header');
 const logo = document.querySelector('.logo>a');
 const logo_bg = document.querySelector('.logo_bg');
 const pc_nav = document.querySelector('.pc_nav');
 const main_menu = document.querySelectorAll('.main_menu>li');
 const header_title = document.querySelector('.header_title');
+const header_title_bg = document.querySelector('.header_title_bg');
 const title = document.querySelector('.header_title_bg>p');
-const dark = document.querySelector('.dark');
-const light = document.querySelector('.light');
+const dark = document.querySelector('.dark_mode');
+const light = document.querySelector('.light_mode');
 const about_wrapper = document.querySelector('.about_wrapper');
 const about = document.querySelector('.about');
 const return_arrow = document.querySelector('.return>img');
+const classification_list_all = document.querySelector('.classification_list');
 const classification_list = document.querySelectorAll('.classification_list>li');
 const contents = document.querySelector('.contents');
 const list_all = document.querySelector('.all');
 const list_ld = document.querySelector('.ld');
 const list_sd = document.querySelector('.sd');
 const list_etc = document.querySelector('.etc');
+const footer = document.querySelector('footer');
 let styleEle = document.createElement('style');
 styleEle.id = "keyset";
 document.head.appendChild(styleEle);
@@ -26,6 +30,7 @@ let etc_cnt2 = 2;
 let gif_cnt = 2;
 let all_etc_cnt = etc_cnt + etc_cnt2 + gif_cnt;
 let all_cnt = ld_cnt + sd_cnt + etc_cnt + etc_cnt2 + gif_cnt;
+let current_mode = 'dark';
 
 //logo rotate animation
 logo.addEventListener('mouseenter', () => { logo_bg.classList.add('rotate'); });
@@ -40,14 +45,49 @@ let classification_list_after = document.head.appendChild(document.createElement
 classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
 
 //mode controll
-light.classList.add('show');
+let header_title_bg_before = document.head.appendChild(document.createElement('style'));
+let header_title_bg_after = document.head.appendChild(document.createElement('style'));
+
+dark_mode_on();
+function dark_mode_on(){
+    current_mode = 'dark';
+    light.classList.add('show');
+    header.classList.add('dark');
+    pc_nav.classList.add('dark');
+    header_title_bg.classList.add('dark');
+    title.classList.add('dark');
+    contents.classList.add('dark');
+    classification_list_all.classList.add('dark');
+    total.classList.add('dark');
+    footer.classList.add('dark');    
+    header_title_bg_before.innerHTML = '.header_title_bg:before{ content: ""; position: absolute; top: 10px; left: -15px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_dark 1.3s linear forwards; animation-delay: 1s; }';
+    header_title_bg_after.innerHTML = '.header_title_bg:after{ content: ""; position: absolute; top: -15px; left: 10px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_2_dark 1.3s linear forwards; animation-delay: 2.3s; }';
+}
+
 dark.addEventListener('click', () => {
     dark.classList.remove('show');
-    light.classList.add('show');
+    document.querySelectorAll('.star_light').forEach( star => star.className = 'star');
+
+    dark_mode_on();
+    artworks.forEach( img => img.classList.add('dark') );
 });
 light.addEventListener('click', () => {
+    current_mode = 'light';
+    document.querySelectorAll('.star').forEach( star => star.className = 'star_light');
     dark.classList.add('show');
     light.classList.remove('show');
+    light.classList.remove('show');
+    header.classList.remove('dark');
+    pc_nav.classList.remove('dark');
+    header_title_bg.classList.remove('dark');
+    title.classList.remove('dark');
+    contents.classList.remove('dark');
+    classification_list_all.classList.remove('dark');
+    total.classList.remove('dark');
+    artworks.forEach( img => img.classList.remove('dark') );
+    footer.classList.remove('dark');
+    header_title_bg_before.innerHTML = '.header_title_bg:before{ content: ""; position: absolute; top: 10px; left: -15px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line 1.3s linear forwards; animation-delay: 1s; }';
+    header_title_bg_after.innerHTML = '.header_title_bg:after{ content: ""; position: absolute; top: -15px; left: 10px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_2 1.3s linear forwards; animation-delay: 2.3s; }';
 });
 
 //show about
@@ -86,6 +126,7 @@ function count_ld(list){
     for( let i = 0 ; i < ld_cnt ; i++ ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
+        img_box.classList.add('dark');
     
         let img = document.createElement('img');
         img.src='img/ld/ld'+ (i+1)+'.png';
@@ -100,6 +141,7 @@ function count_sd(list){
     for( let i = 0 ; i < sd_cnt; i++ ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
+        img_box.classList.add('dark');
     
         let img = document.createElement('img');
         img.src='img/sd/sd'+ (i+1)+'.png';
@@ -114,6 +156,7 @@ function count_etc(list){
     for( let i = 0 ; i < etc_cnt; i++ ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
+        img_box.classList.add('dark');
     
         let img = document.createElement('img');
         img.src='img/etc/etc'+ (i+1)+'.png';
@@ -126,6 +169,7 @@ function count_etc(list){
     for( let i = etc_cnt + 1 ; i <= etc_cnt + gif_cnt; i++ ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
+        img_box.classList.add('dark');
     
         let img = document.createElement('img');
         img.src='img/etc/etc'+ i+'.gif';
@@ -138,6 +182,7 @@ function count_etc(list){
     for( let i = etc_cnt + gif_cnt + 1 ; i <= etc_cnt + gif_cnt + etc_cnt2; i++ ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
+        img_box.classList.add('dark');
     
         let img = document.createElement('img');
         img.src='img/etc/etc'+ i+'.png';
@@ -234,6 +279,7 @@ const dark_bg = document.querySelector('.dark_bg');
 const return_bg = document.querySelector('.return_bg');
 
 artworks.forEach( img => img.addEventListener('click', () => {
+    img.classList.add('zoom');
     let zoom_img = document.createElement('img');
     zoom_img.src = img.children[0].src;
     zoom_img.alt = img.children[0].alt;
@@ -263,6 +309,7 @@ return_works.addEventListener('click', return_gallery );
 return_bg.addEventListener('click', return_gallery );
 
 function return_gallery(){
+    artworks.forEach( img => img.classList.remove('zoom') );
     document.querySelector('body').classList.remove('scrolllock');
     return_works.classList.remove('show');
     dark_bg.classList.remove('show');
@@ -293,7 +340,6 @@ function star(){
     }
 }
 set_star_animation();
-
 function set_star_animation(){
     styleEle.innerHTML = `
     @keyframes starAnimate{
@@ -317,7 +363,6 @@ function set_star_animation(){
     }
     `;
 }
-
 window.addEventListener('resize', () => {
     while( star_bg.hasChildNodes() ){
         star_bg.removeChild(star_bg.firstChild);
@@ -325,7 +370,6 @@ window.addEventListener('resize', () => {
 
     star();
 });
-
 star();
 
 //mouse indicator
@@ -359,7 +403,7 @@ $(document).ready(function(){
         var top = "top: " + getRandomInt(mousePos.y-range-sizeInt, mousePos.y+range) + "px;"; 
   
         var style = left+top+color+size;
-        $("<div class='ball' style='" + style + "'></div>").appendTo('body').one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){$(this).remove();}); 
+        $("<div class='ball dark' style='" + style + "'></div>").appendTo('body').one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){$(this).remove();}); 
       }
     }, 1);
   });

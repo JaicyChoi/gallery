@@ -28,11 +28,10 @@ header{
     width: 100%;
     overflow: hidden;
     background-color: #B7EF9D;
-    background: rgb(0,0,0);
-    background: linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,14,1,1) 55%);
 }
 header.dark{
-    background-color: #000e01;
+    background: rgb(0,0,0);
+    background: linear-gradient(360deg, rgba(0,0,0,1) 0%, rgb(0 24 2) 55%);
 }
 header.scrolllock{
     height: 100vh;
@@ -42,19 +41,11 @@ header.scrolllock{
     float: left;
     width: 100%;
     height: 100%;
-    background: url(../img/etc/etc6.png) no-repeat right;
-    mix-blend-mode: darken;
-    
     background: url(../img/main_bg_dark.png) no-repeat right;
     mix-blend-mode: exclusion;
-   
     background-size: contain;
     opacity: .85;
     animation: header_bg_img 6s linear;
-}
-.header_bg_img.dark{
-    mix-blend-mode: exclusion;
-    background: url(../img/main_bg_dark.png) no-repeat right;
 }
 .header_wrapper{
     position: relative;
@@ -104,7 +95,6 @@ header.scrolllock{
     font-size: 1em;
     color: black;
     background-color: rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, .75);
     width: 400px;
     height: 35px;
     opacity: 0;
@@ -135,6 +125,32 @@ header.scrolllock{
     width: 100%;
     text-align: center;
 }
+.main_menu li:nth-child(1):hover:after,.main_menu li:nth-child(2):hover:after, .main_menu li:nth-child(3):hover:after, .main_menu li:nth-child(4):hover:after{
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 65px;
+    height: 65px;
+    display: block;
+    animation: menu_animate .8s linear infinite;
+}
+.main_menu li:nth-child(1):hover:after{
+   background:url(../img/about.png) no-repeat center;
+   background-size: cover;
+}
+.main_menu li:nth-child(2):hover:after{
+   background:url(../img/works.png) no-repeat center;
+   background-size: cover;
+}
+.main_menu li:nth-child(3):hover:after{
+   background:url(../img/blog.png) no-repeat center;
+   background-size: cover;
+}
+.main_menu li:nth-child(4):hover:after{
+   background:url(../img/contact.png) no-repeat center;
+   background-size: cover;
+}
 .main_menu li:last-child{
     margin-right: 0;
 }
@@ -145,6 +161,7 @@ header.scrolllock{
 .main_menu li a{
     color: black;
     text-decoration: none;
+    display: block;
 }
 .header_title{
     position: relative;
@@ -160,24 +177,23 @@ header.scrolllock{
     position: relative;
     float: left;
     background-color: rgba(255, 255, 255, .55);
-    background-color: rgba(255, 255, 255, .3);
     width: 600px;
     height: 300px;
     left: 50%;
     transform: translateX(-50%);
     animation: title_bg .7s ease-in-out;
+    box-shadow: 13px 13px 3px rgba(41, 130, 0, 0.75);
 }
 .header_title_bg.dark{
     background-color: rgba(255, 255, 255, .3);
+    box-shadow: 13px 13px 3px rgba(41, 130, 0, 0.3);
 }
 .header_title_bg p{
     font-family: 'Bebas Neue', cursive;
     font-size: 7.5em;
     color: #298200;
-    color: #B7EF9D;
     line-height: 0.9em;
     text-shadow: 0px 5px 4px white;
-    text-shadow: 0px 5px 4px #298200;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -244,7 +260,7 @@ header.scrolllock{
     height: 35px;
     cursor: pointer;
 }
-.dark{
+.dark_mode{
     position: absolute;
     float: left;
     width: 100%;
@@ -258,13 +274,13 @@ header.scrolllock{
     transition: all .3s ease-in-out;
     visibility: hidden;
 }
-.dark.show{
+.dark_mode.show{
     visibility: visible;
 }
-.dark:hover{
+.dark_mode:hover{
     box-shadow: 7px 7px 0 0 rgba(0, 0, 0, 0.35); 
 }
-.light{
+.light_mode{
     position: absolute;
     float: left;
     width: 100%;
@@ -278,10 +294,10 @@ header.scrolllock{
     transition: all .3s ease-in-out;
     visibility: hidden;
 }
-.light.show{
+.light_mode.show{
     visibility: visible;
 }
-.light:hover{
+.light_mode:hover{
     box-shadow: 7px 7px 0 0 rgba(255, 255, 255, 0.35);
 }
 .about_wrapper{
@@ -370,8 +386,6 @@ header.scrolllock{
     width: 100%;
     background: rgb(205,205,205);
     background: linear-gradient(360deg, rgba(205,205,205,1) 0%, rgba(242,242,242,1) 45%, rgba(252,252,252,1) 55%, rgba(207,255,185,1) 100%);
-    background: rgb(127,153,115);
-    background: linear-gradient(360deg, rgba(127,153,115,1) 0%, rgba(0,0,0,1) 100%);
 }
 .contents.dark{
     background: rgb(127,153,115);
@@ -397,7 +411,6 @@ header.scrolllock{
     transform: translateX(-50%);
     font-family: 'Elsie Swash Caps', cursive;
     font-size: 1em;
-    color: white;
 }
 .classification_list.dark{
     color: white;
@@ -442,6 +455,9 @@ header.scrolllock{
     font-size: 1em;
     font-family: 'Slabo 27px', serif;
 }
+.total.dark{
+    color: white;
+}
 .works_list{
     position: relative;
     float: left;
@@ -463,9 +479,14 @@ header.scrolllock{
     cursor: pointer;
     transition: all .3s ease;
 }
+.img_box.zoom{
+    opacity: 0;
+}
 .img_box:hover{
     transform: translate(-7px, -5px);
     box-shadow: 10px 7px 10px rgba(0, 0, 0, .5);
+}
+.img_box.dark:hover{
     box-shadow: 10px 7px 10px rgba(183, 239, 157, .5);
 }
 .img_box:hover:after{
@@ -496,16 +517,6 @@ header.scrolllock{
 .works_list.sd.show{ display: grid; }
 .works_list.etc{ display: none; }
 .works_list.etc.show{ display: grid; }
-.top_btn_wrapper{
-    position: fixed;
-    float: left;
-    bottom: 150px;
-    width: 1350px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: all 0.7s ease;
-}
 .view_image_wrapper{
     position: fixed;
     float: left;
@@ -513,9 +524,13 @@ header.scrolllock{
     top: 50%;
     transform: translateY(-50%);
     z-index: -1;
+    opacity: 0;
+    transition: all .5s ease-in-out;
+    transition-delay: .2s;
 }
 .view_image_wrapper.show{
     z-index: 2;
+    opacity: 100%;
 }
 .view_img{
     position: relative;
@@ -569,8 +584,21 @@ header.scrolllock{
     height: 50px;
     cursor: pointer;
 }
+.top_btn_wrapper{
+    position: fixed;
+    float: left;
+    bottom: 0;
+    width: 1350px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+/*     display: none; */
+    transition: all 0.7s ease;
+}
 .top_btn_wrapper.show{
+    bottom: 150px;
     opacity: 100%;
+/*     display: block; */
 }
 .top_btn{
     position: absolute;
@@ -591,7 +619,6 @@ footer{
     float: left;
     width: 100%;
     background-color: #A4A4A4;
-    background-color: #000e01;
 }
 footer.dark{
     background-color: #000e01;
@@ -612,7 +639,7 @@ footer.dark{
     color: white;
     top: 50%;
     transform: translateY(-50%);
-    text-shadow: 0 0 5px black;
+    text-shadow: 0 0 5px #ff4242;
 }
 .footer_wrapper p:before{
     content: '';
@@ -636,9 +663,12 @@ footer.dark{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, .7);
+    opacity: 0;
     z-index: -1;
+    transition: all .5s ease-in-out;
 }
 .dark_bg.show{
+    opacity: 100%;
     z-index: 1;
 }
 .return_bg{
@@ -655,7 +685,7 @@ footer.dark{
 .return_bg.show{
     display: block;
 }
-.ball {
+.ball{
     pointer-events: none;
     position: absolute; 
     width: 10px;
@@ -665,11 +695,10 @@ footer.dark{
     animation: implode 1s ease-in-out;
     animation-fill-mode: both;
     opacity: .15;
-    opacity: .35;
     transition: all .5s ease;
     z-index: 2;
 }
-.ball{
+.ball.dark{
     opacity: .35;
 }
 .star_bg{
@@ -680,7 +709,6 @@ footer.dark{
     height: 100%;
     overflow: hidden;
 }
-
 .star_bg:after{
     content: '';
     width: 100%;
@@ -692,10 +720,18 @@ footer.dark{
 .star{
     position: absolute;
     bottom: 0;
-/*     width: 1px;
-    height: 1px; */
     animation: starAnimate linear infinite;
     background-color: white;
     opacity: 0;
     z-index: 1;
+    box-shadow: 0 0 1px 2px rgba(255, 255, 255, .15);
+}
+.star_light{
+    position: absolute;
+    bottom: 0;
+    animation: starAnimate linear infinite;
+    background-color: green;
+    opacity: 0;
+    z-index: 1;
+    box-shadow: 0 0 1px 2px rgba(0, 128, 0, .15);
 }
