@@ -25,7 +25,7 @@ document.head.appendChild(styleEle);
 let total = document.querySelector('.total');
 let ld_cnt = 9;
 let sd_cnt = 6;
-let etc_cnt = 7;
+let etc_cnt = 8;
 let etc_cnt2 = 3;
 let gif_cnt = 2;
 let all_etc_cnt = etc_cnt + etc_cnt2 + gif_cnt;
