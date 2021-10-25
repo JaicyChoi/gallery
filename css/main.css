@@ -45,7 +45,19 @@ header.scrolllock{
     mix-blend-mode: exclusion;
     background-size: contain;
     opacity: .85;
-    animation: header_bg_img 6s linear;
+    animation: header_bg_img 2s linear;
+}
+.header_bg_img.dark{
+    background: url(../img/main_bg_dark_raha.png) no-repeat left;
+    mix-blend-mode: exclusion;
+    background-size: contain;
+    animation: header_bg_img_dark 6s linear;
+}
+.header_bg_img.dark2{
+    background: url(../img/main_bg_dark_raha.png) no-repeat left;
+    mix-blend-mode: exclusion;
+    background-size: contain;
+    animation: header_bg_img_dark2 2s linear;
 }
 .header_wrapper{
     position: relative;
@@ -149,6 +161,23 @@ header.scrolllock{
 }
 .main_menu li:nth-child(4):hover:after{
    background:url(../img/contact.png) no-repeat center;
+   background-size: cover;
+}
+
+.main_menu li.dark:nth-child(1):hover:after{
+   background:url(../img/about_dark.png) no-repeat center;
+   background-size: cover;
+}
+.main_menu li.dark:nth-child(2):hover:after{
+   background:url(../img/works_dark.png) no-repeat center;
+   background-size: cover;
+}
+.main_menu li.dark:nth-child(3):hover:after{
+   background:url(../img/blog_dark.png) no-repeat center;
+   background-size: cover;
+}
+.main_menu li.dark:nth-child(4):hover:after{
+   background:url(../img/contact_dark.png) no-repeat center;
    background-size: cover;
 }
 .main_menu li:last-child{
@@ -259,6 +288,10 @@ header.scrolllock{
     width: 135px;
     height: 35px;
     cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+.change_mode.hide{
+    opacity: 0;
 }
 .dark_mode{
     position: absolute;
@@ -337,6 +370,9 @@ header.scrolllock{
     color: white;
     width: 700px;
     text-align: center;
+}
+.text_box.dark{
+    float: right;
 }
 .about_title{
     font-size: 4em;

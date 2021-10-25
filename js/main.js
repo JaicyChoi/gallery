@@ -1,4 +1,5 @@
 const header = document.querySelector('header');
+const header_bg_img = document.querySelector('.header_bg_img');
 const logo = document.querySelector('.logo>a');
 const logo_bg = document.querySelector('.logo_bg');
 const pc_nav = document.querySelector('.pc_nav');
@@ -6,10 +7,12 @@ const main_menu = document.querySelectorAll('.main_menu>li');
 const header_title = document.querySelector('.header_title');
 const header_title_bg = document.querySelector('.header_title_bg');
 const title = document.querySelector('.header_title_bg>p');
+const change_mode = document.querySelector('.change_mode');
 const dark = document.querySelector('.dark_mode');
 const light = document.querySelector('.light_mode');
 const about_wrapper = document.querySelector('.about_wrapper');
 const about = document.querySelector('.about');
+const about_text_box = document.querySelector('.text_box');
 const return_arrow = document.querySelector('.return>img');
 const classification_list_all = document.querySelector('.classification_list');
 const classification_list = document.querySelectorAll('.classification_list>li');
@@ -49,6 +52,8 @@ let header_title_bg_before = document.head.appendChild(document.createElement('s
 let header_title_bg_after = document.head.appendChild(document.createElement('style'));
 
 dark_mode_on();
+header_bg_img.classList.add('dark');
+
 function dark_mode_on(){
     current_mode = 'dark';
     light.classList.add('show');
@@ -56,6 +61,7 @@ function dark_mode_on(){
     pc_nav.classList.add('dark');
     header_title_bg.classList.add('dark');
     title.classList.add('dark');
+    about_text_box.classList.add('dark');
     contents.classList.add('dark');
     classification_list_all.classList.add('dark');
     total.classList.add('dark');
@@ -65,10 +71,13 @@ function dark_mode_on(){
 }
 
 dark.addEventListener('click', () => {
+    dark_mode_on();
+    if( current_mode === 'dark' )
+        header_bg_img.classList.add('dark2');
+
     dark.classList.remove('show');
     document.querySelectorAll('.star_light').forEach( star => star.className = 'star');
 
-    dark_mode_on();
     artworks.forEach( img => img.classList.add('dark') );
 });
 light.addEventListener('click', () => {
@@ -76,11 +85,13 @@ light.addEventListener('click', () => {
     document.querySelectorAll('.star').forEach( star => star.className = 'star_light');
     dark.classList.add('show');
     light.classList.remove('show');
-    light.classList.remove('show');
     header.classList.remove('dark');
+    header_bg_img.classList.remove('dark');
+    header_bg_img.classList.remove('dark2');
     pc_nav.classList.remove('dark');
     header_title_bg.classList.remove('dark');
     title.classList.remove('dark');
+    about_text_box.classList.remove('dark');
     contents.classList.remove('dark');
     classification_list_all.classList.remove('dark');
     total.classList.remove('dark');
@@ -90,6 +101,15 @@ light.addEventListener('click', () => {
     header_title_bg_after.innerHTML = '.header_title_bg:after{ content: ""; position: absolute; top: -15px; left: 10px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_2 1.3s linear forwards; animation-delay: 2.3s; }';
 });
 
+//menu mouse over event
+main_menu.forEach( li => li.addEventListener('mouseenter', ()=>{
+    if( current_mode === 'dark' )
+        li.classList.add('dark');
+    else
+        li.classList.remove('dark');
+}));
+
+
 //show about
 main_menu[0].addEventListener('click', () => {
     document.querySelector('body').classList.add('scrolllock');
@@ -98,6 +118,7 @@ main_menu[0].addEventListener('click', () => {
     header_title.classList.add('hide');
     about_wrapper.classList.add('show');
     about.classList.add('show');
+    change_mode.classList.add('hide');
 });
 return_arrow.addEventListener('click', () => {
     document.querySelector('body').classList.remove('scrolllock');
@@ -106,6 +127,7 @@ return_arrow.addEventListener('click', () => {
     header_title.classList.remove('hide');
     about_wrapper.classList.remove('show');
     about.classList.remove('show');
+    change_mode.classList.remove('hide');
 });
 
 //go works
