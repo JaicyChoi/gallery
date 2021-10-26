@@ -361,10 +361,10 @@ classification_list[3].addEventListener('click', ()=>{
 window.addEventListener('scroll', function(){
     let scroll_height = window.pageYOffset;
 
-    if( scroll_height >= contents.scrollHeight/4 ){
+    if( scroll_height >= contents.scrollHeight/6 ){
         top_btn_wrapper.classList.add('show');
     }
-    else if( scroll_height < contents.scrollHeight/4 ){
+    else if( scroll_height < contents.scrollHeight/6 ){
         top_btn_wrapper.classList.remove('show');
     }
 });
