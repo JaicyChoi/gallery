@@ -21,12 +21,16 @@ const list_all = document.querySelector('.all');
 const list_ld = document.querySelector('.ld');
 const list_sd = document.querySelector('.sd');
 const list_etc = document.querySelector('.etc');
+const top_btn_wrapper = document.querySelector('.top_btn_wrapper');
+const main_btn_wrapper = document.querySelector('.main_btn_wrapper');
+const top_btn = document.querySelector('.top_btn');
+const main_btn = document.querySelector('.main_btn');
 const footer = document.querySelector('footer');
 let styleEle = document.createElement('style');
 styleEle.id = "keyset";
 document.head.appendChild(styleEle);
 let total = document.querySelector('.total');
-let ld_cnt = 9;
+let ld_cnt = 10;
 let sd_cnt = 6;
 let etc_cnt = 8;
 let etc_cnt2 = 3;
@@ -34,6 +38,27 @@ let gif_cnt = 2;
 let all_etc_cnt = etc_cnt + etc_cnt2 + gif_cnt;
 let all_cnt = ld_cnt + sd_cnt + etc_cnt + etc_cnt2 + gif_cnt;
 let current_mode = 'dark';
+let list_selected = 1;
+let current_position = 'header';
+let last_animation = 0;
+const animation_interval = 1000;
+
+document.querySelector('body').classList.add('scrolllock');
+// document.addEventListener('mousewheel', function(event){
+//     let delta = event.wheelDelta;
+//     let realtime = new Date().getTime();
+
+//     if( realtime - last_animation < animation_interval ) return;
+//     if( current_position === 'header' && delta < 0 ){
+//         current_position = 'contents';
+//         header.classList.add('hide');
+//         contents.scrollIntoView({behavior:'smooth'});
+//         document.querySelector('body').classList.remove('scrolllock');  
+//         main_btn_wrapper.classList.add('show');
+//     }
+
+//     last_animation = realtime;
+// });
 
 //logo rotate animation
 logo.addEventListener('mouseenter', () => { logo_bg.classList.add('rotate'); });
@@ -42,10 +67,11 @@ logo.addEventListener('mouseleave', () => { logo_bg.classList.remove('rotate'); 
 //header animation
 setTimeout( () => { pc_nav.classList.add('show'); }, 5000);
 setTimeout( () => { title.classList.add('show'); }, 3000);
+
 list_all.classList.add('show');
-classification_list[0].classList.add('selected');
 let classification_list_after = document.head.appendChild(document.createElement('style'));
-classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
 
 //mode controll
 let header_title_bg_before = document.head.appendChild(document.createElement('style'));
@@ -58,6 +84,8 @@ function dark_mode_on(){
     current_mode = 'dark';
     light.classList.add('show');
     header.classList.add('dark');
+    logo.classList.add('dark');
+    logo_bg.classList.add('dark');
     pc_nav.classList.add('dark');
     header_title_bg.classList.add('dark');
     title.classList.add('dark');
@@ -65,9 +93,15 @@ function dark_mode_on(){
     contents.classList.add('dark');
     classification_list_all.classList.add('dark');
     total.classList.add('dark');
+    top_btn.classList.add('dark');
+    main_btn.classList.add('dark');
     footer.classList.add('dark');    
     header_title_bg_before.innerHTML = '.header_title_bg:before{ content: ""; position: absolute; top: 10px; left: -15px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_dark 1.3s linear forwards; animation-delay: 1s; }';
     header_title_bg_after.innerHTML = '.header_title_bg:after{ content: ""; position: absolute; top: -15px; left: 10px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_2_dark 1.3s linear forwards; animation-delay: 2.3s; }';
+    classification_list[list_selected-1].classList.add('selected_dark');
+    classification_list_after.innerHTML = '.classification_list li:nth-child('+ list_selected +'):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+    classification_list.forEach( li => li.classList.add('dark') );
+    classification_list.forEach( li => li.classList.remove('selected') );
 }
 
 dark.addEventListener('click', () => {
@@ -88,6 +122,8 @@ light.addEventListener('click', () => {
     header.classList.remove('dark');
     header_bg_img.classList.remove('dark');
     header_bg_img.classList.remove('dark2');
+    logo.classList.remove('dark');
+    logo_bg.classList.remove('dark');
     pc_nav.classList.remove('dark');
     header_title_bg.classList.remove('dark');
     title.classList.remove('dark');
@@ -96,9 +132,15 @@ light.addEventListener('click', () => {
     classification_list_all.classList.remove('dark');
     total.classList.remove('dark');
     artworks.forEach( img => img.classList.remove('dark') );
+    top_btn.classList.remove('dark');
+    main_btn.classList.remove('dark');
     footer.classList.remove('dark');
     header_title_bg_before.innerHTML = '.header_title_bg:before{ content: ""; position: absolute; top: 10px; left: -15px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line 1.3s linear forwards; animation-delay: 1s; }';
     header_title_bg_after.innerHTML = '.header_title_bg:after{ content: ""; position: absolute; top: -15px; left: 10px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_2 1.3s linear forwards; animation-delay: 2.3s; }';
+    classification_list[list_selected-1].classList.add('selected');
+    classification_list_after.innerHTML = '.classification_list li:nth-child('+ list_selected +'):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    classification_list.forEach( li => li.classList.remove('dark') );
+    classification_list.forEach( li => li.classList.remove('selected_dark') );
 });
 
 //menu mouse over event
@@ -132,7 +174,11 @@ return_arrow.addEventListener('click', () => {
 
 //go works
 main_menu[1].addEventListener('click', () => {
+    current_position = 'contents';
+    header.classList.add('hide');
     contents.scrollIntoView({behavior:'smooth'});
+    document.querySelector('body').classList.remove('scrolllock');
+    main_btn_wrapper.classList.add('show');
 });
 
 //count all
@@ -145,14 +191,14 @@ count_sd(list_sd);
 count_etc(list_etc);
 
 function count_ld(list){
-    for( let i = 0 ; i < ld_cnt ; i++ ){
+    for( let i = ld_cnt ; i > 0 ; i-- ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
         img_box.classList.add('dark');
     
         let img = document.createElement('img');
-        img.src='img/ld/ld'+ (i+1)+'.png';
-        img.alt='ld'+ (i+1);
+        img.src='img/ld/ld'+ i +'.png';
+        img.alt='ld'+ i;
     
         img_box.appendChild(img);
         list.appendChild(img_box);
@@ -160,14 +206,14 @@ function count_ld(list){
 }
 
 function count_sd(list){
-    for( let i = 0 ; i < sd_cnt; i++ ){
+    for( let i = sd_cnt ; i > 0 ; i-- ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
         img_box.classList.add('dark');
     
         let img = document.createElement('img');
-        img.src='img/sd/sd'+ (i+1)+'.png';
-        img.alt='sd'+ (i+1);
+        img.src='img/sd/sd'+ i +'.png';
+        img.alt='sd'+ i;
     
         img_box.appendChild(img);
         list.appendChild(img_box);
@@ -175,20 +221,20 @@ function count_sd(list){
 }
 
 function count_etc(list){
-    for( let i = 0 ; i < etc_cnt; i++ ){
+    for( let i = etc_cnt + gif_cnt + etc_cnt2 ; i >= etc_cnt + gif_cnt + 1 ; i-- ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
         img_box.classList.add('dark');
     
         let img = document.createElement('img');
-        img.src='img/etc/etc'+ (i+1)+'.png';
-        img.alt='etc'+ (i+1);
+        img.src='img/etc/etc'+ i+'.png';
+        img.alt='etc'+ i;
     
         img_box.appendChild(img);
         list.appendChild(img_box);
     }
-    
-    for( let i = etc_cnt + 1 ; i <= etc_cnt + gif_cnt; i++ ){
+
+    for( let i = etc_cnt + gif_cnt ; i >= etc_cnt + 1 ; i-- ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
         img_box.classList.add('dark');
@@ -201,13 +247,13 @@ function count_etc(list){
         list.appendChild(img_box);
     }
 
-    for( let i = etc_cnt + gif_cnt + 1 ; i <= etc_cnt + gif_cnt + etc_cnt2; i++ ){
+    for( let i = etc_cnt ; i > 0; i-- ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
         img_box.classList.add('dark');
     
         let img = document.createElement('img');
-        img.src='img/etc/etc'+ i+'.png';
+        img.src='img/etc/etc'+ i +'.png';
         img.alt='etc'+ i;
     
         img_box.appendChild(img);
@@ -219,75 +265,120 @@ total.innerHTML = 'Total : ' + all_cnt;
 
 //classification controll
 classification_list[0].addEventListener('click', ()=>{
+    list_selected = 1;
     list_all.classList.add('show');
     list_ld.classList.remove('show');
     list_sd.classList.remove('show');
     list_etc.classList.remove('show');
-    classification_list[0].classList.add('selected');
-    classification_list[1].classList.remove('selected');
-    classification_list[2].classList.remove('selected');
-    classification_list[3].classList.remove('selected');
-    classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    if(current_mode === 'light'){
+        classification_list[0].classList.add('selected');
+        classification_list[1].classList.remove('selected');
+        classification_list[2].classList.remove('selected');
+        classification_list[3].classList.remove('selected');
+        classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    }   
+    else{
+        classification_list[0].classList.add('selected_dark');
+        classification_list[1].classList.remove('selected_dark');
+        classification_list[2].classList.remove('selected_dark');
+        classification_list[3].classList.remove('selected_dark');
+        classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+    }
     total.innerHTML = 'Total : ' + all_cnt;
     set_star_animation();
 });
 classification_list[1].addEventListener('click', ()=>{
+    list_selected = 2;
     list_all.classList.remove('show');
     list_ld.classList.add('show');
     list_sd.classList.remove('show');
     list_etc.classList.remove('show');
-    classification_list[0].classList.remove('selected');
-    classification_list[1].classList.add('selected');
-    classification_list[2].classList.remove('selected');
-    classification_list[3].classList.remove('selected');
-    classification_list_after.innerHTML = '.classification_list li:nth-child(2):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    if(current_mode === 'light'){
+        classification_list[0].classList.remove('selected');
+        classification_list[1].classList.add('selected');
+        classification_list[2].classList.remove('selected');
+        classification_list[3].classList.remove('selected');
+        classification_list_after.innerHTML = '.classification_list li:nth-child(2):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    }
+    else{
+        classification_list[0].classList.remove('selected_dark');
+        classification_list[1].classList.add('selected_dark');
+        classification_list[2].classList.remove('selected_dark');
+        classification_list[3].classList.remove('selected_dark');
+        classification_list_after.innerHTML = '.classification_list li:nth-child(2):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+    }
     total.innerHTML = 'Total : ' + ld_cnt;
     set_star_animation();
 });
 classification_list[2].addEventListener('click', ()=>{
+    list_selected = 3;
     list_all.classList.remove('show');
     list_ld.classList.remove('show');
     list_sd.classList.add('show');
     list_etc.classList.remove('show');
-    classification_list[0].classList.remove('selected');
-    classification_list[1].classList.remove('selected');
-    classification_list[2].classList.add('selected');
-    classification_list[3].classList.remove('selected');
-    classification_list_after.innerHTML = '.classification_list li:nth-child(3):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    if(current_mode === 'light'){
+        classification_list[0].classList.remove('selected');
+        classification_list[1].classList.remove('selected');
+        classification_list[2].classList.add('selected');
+        classification_list[3].classList.remove('selected');
+        classification_list_after.innerHTML = '.classification_list li:nth-child(3):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    }
+    else{
+        classification_list[0].classList.remove('selected_dark');
+        classification_list[1].classList.remove('selected_dark');
+        classification_list[2].classList.add('selected_dark');
+        classification_list[3].classList.remove('selected_dark');
+        classification_list_after.innerHTML = '.classification_list li:nth-child(3):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+    }
     total.innerHTML = 'Total : ' + sd_cnt;
     set_star_animation();
 });
 classification_list[3].addEventListener('click', ()=>{
+    list_selected = 4;
     list_all.classList.remove('show');
     list_ld.classList.remove('show');
     list_sd.classList.remove('show');
     list_etc.classList.add('show');
-    classification_list[0].classList.remove('selected');
-    classification_list[1].classList.remove('selected');
-    classification_list[2].classList.remove('selected');
-    classification_list[3].classList.add('selected');
-    classification_list_after.innerHTML = '.classification_list li:nth-child(4):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    if(current_mode === 'light'){
+        classification_list[0].classList.remove('selected');
+        classification_list[1].classList.remove('selected');
+        classification_list[2].classList.remove('selected');
+        classification_list[3].classList.add('selected');
+        classification_list_after.innerHTML = '.classification_list li:nth-child(4):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    }
+    else{
+        classification_list[0].classList.remove('selected_dark');
+        classification_list[1].classList.remove('selected_dark');
+        classification_list[2].classList.remove('selected_dark');
+        classification_list[3].classList.add('selected_dark');
+        classification_list_after.innerHTML = '.classification_list li:nth-child(4):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+    }    
     total.innerHTML = 'Total : ' + all_etc_cnt;
     set_star_animation();
 });
 
 //top button controll
-const top_btn_wrapper = document.querySelector('.top_btn_wrapper');
-const top_btn = document.querySelector('.top_btn');
-
 window.addEventListener('scroll', function(){
     let scroll_height = window.pageYOffset;
 
-    if( scroll_height >= document.body.scrollHeight/5 ){
+    if( scroll_height >= contents.scrollHeight/4 ){
         top_btn_wrapper.classList.add('show');
     }
-    else if( scroll_height < document.body.scrollHeight/5 ){
+    else if( scroll_height < contents.scrollHeight/4 ){
         top_btn_wrapper.classList.remove('show');
     }
 });
 
 top_btn.addEventListener('click', function(){
+    contents.scrollIntoView({behavior:'smooth'});
+});
+
+main_btn.addEventListener('click', function(){
+    current_position = 'header';
+    header.classList.remove('hide');
     document.querySelector('header').scrollIntoView({behavior:'smooth'});
+    document.querySelector('body').classList.add('scrolllock');
+    main_btn_wrapper.classList.remove('show');
 });
 
 //view images
