@@ -1,3 +1,6 @@
+if (performance.navigation.type == performance.navigation.TYPE_RELOAD)
+    window.location.href = 'index.html';
+
 const header = document.querySelector('header');
 const header_bg_img = document.querySelector('.header_bg_img');
 const logo = document.querySelector('.logo>a');
@@ -142,6 +145,18 @@ light.addEventListener('click', () => {
     classification_list.forEach( li => li.classList.remove('dark') );
     classification_list.forEach( li => li.classList.remove('selected_dark') );
 });
+
+document.onkeydown = function(e){
+    /* F5, Ctrl+r, Ctrl+F5 */
+    if(e.keyCode == 116 || e.ctrlKey == true && (e.keyCode == 82)){
+        e.cancelBubble = true; 
+        e.returnValue = false; 
+        setTimeout(function(){
+            window.location.reload();
+        }, 1000);
+        return false;
+    }
+}
 
 //menu mouse over event
 main_menu.forEach( li => li.addEventListener('mouseenter', ()=>{
