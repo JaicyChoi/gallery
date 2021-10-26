@@ -300,7 +300,7 @@ classification_list[0].addEventListener('click', ()=>{
         classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
     }
     total.innerHTML = 'Total : ' + all_cnt;
-    set_star_animation();
+    // set_star_animation();
 });
 classification_list[1].addEventListener('click', ()=>{
     list_selected = 2;
@@ -323,7 +323,7 @@ classification_list[1].addEventListener('click', ()=>{
         classification_list_after.innerHTML = '.classification_list li:nth-child(2):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
     }
     total.innerHTML = 'Total : ' + ld_cnt;
-    set_star_animation();
+    // set_star_animation();
 });
 classification_list[2].addEventListener('click', ()=>{
     list_selected = 3;
@@ -346,7 +346,7 @@ classification_list[2].addEventListener('click', ()=>{
         classification_list_after.innerHTML = '.classification_list li:nth-child(3):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
     }
     total.innerHTML = 'Total : ' + sd_cnt;
-    set_star_animation();
+    // set_star_animation();
 });
 classification_list[3].addEventListener('click', ()=>{
     list_selected = 4;
@@ -369,7 +369,7 @@ classification_list[3].addEventListener('click', ()=>{
         classification_list_after.innerHTML = '.classification_list li:nth-child(4):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
     }    
     total.innerHTML = 'Total : ' + all_etc_cnt;
-    set_star_animation();
+    // set_star_animation();
 });
 
 //top button controll
