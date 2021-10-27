@@ -7,6 +7,9 @@ const logo = document.querySelector('.logo>a');
 const logo_bg = document.querySelector('.logo_bg');
 const pc_nav = document.querySelector('.pc_nav');
 const main_menu = document.querySelectorAll('.main_menu>li');
+const menu_icon = document.querySelector('.menu_icon');
+const mobile_menu = document.querySelector('.mobile_menu');
+const mobile_menu_li = document.querySelectorAll('.mobile_menu>li');
 const header_title = document.querySelector('.header_title');
 const header_title_bg = document.querySelector('.header_title_bg');
 const title = document.querySelector('.header_title_bg>p');
@@ -90,6 +93,9 @@ function dark_mode_on(){
     logo.classList.add('dark');
     logo_bg.classList.add('dark');
     pc_nav.classList.add('dark');
+    menu_icon.classList.add('dark');
+    mobile_menu.classList.add('dark');
+    mobile_menu_li.forEach( li => li.classList.add('dark') );
     header_title_bg.classList.add('dark');
     title.classList.add('dark');
     about_text_box.classList.add('dark');
@@ -128,6 +134,9 @@ light.addEventListener('click', () => {
     logo.classList.remove('dark');
     logo_bg.classList.remove('dark');
     pc_nav.classList.remove('dark');
+    menu_icon.classList.remove('dark');
+    mobile_menu.classList.remove('dark');
+    mobile_menu_li.forEach( li => li.classList.remove('dark') );
     header_title_bg.classList.remove('dark');
     title.classList.remove('dark');
     about_text_box.classList.remove('dark');
@@ -146,18 +155,6 @@ light.addEventListener('click', () => {
     classification_list.forEach( li => li.classList.remove('selected_dark') );
 });
 
-document.onkeydown = function(e){
-    /* F5, Ctrl+r, Ctrl+F5 */
-    if(e.keyCode == 116 || e.ctrlKey == true && (e.keyCode == 82)){
-        e.cancelBubble = true; 
-        e.returnValue = false; 
-        setTimeout(function(){
-            window.location.reload();
-        }, 1000);
-        return false;
-    }
-}
-
 //menu mouse over event
 main_menu.forEach( li => li.addEventListener('mouseenter', ()=>{
     if( current_mode === 'dark' )
@@ -165,6 +162,11 @@ main_menu.forEach( li => li.addEventListener('mouseenter', ()=>{
     else
         li.classList.remove('dark');
 }));
+
+//mobile nav controll
+menu_icon.addEventListener('click', () => {
+    mobile_menu.classList.add('show');
+});
 
 
 //show about
