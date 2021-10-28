@@ -604,6 +604,7 @@ header.scrolllock{
     position: relative;
     float: left;
     width: 100%;
+    min-height: 100vh;
     background: rgb(205,205,205);
     background: linear-gradient(360deg, rgba(205,205,205,1) 0%, rgba(242,242,242,1) 45%, rgba(252,252,252,1) 55%, rgba(207,255,185,1) 100%);
 }
