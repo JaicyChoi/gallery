@@ -73,10 +73,18 @@ document.querySelector('body').classList.add('scrolllock');
 //     last_animation = realtime;
 // });
 
+//main bg resize controll
 if( window.innerHeight > window.innerWidth )
+        header_bg_img.classList.add('resize');
+else
+    header_bg_img.classList.remove('resize');
+
+window.addEventListener('resize', function() {
+    if( window.innerHeight > window.innerWidth )
         header_bg_img.classList.add('resize');
     else
         header_bg_img.classList.remove('resize');
+});
 
 //logo rotate animation
 logo.addEventListener('mouseenter', () => { logo_bg.classList.add('rotate'); });
@@ -608,6 +616,8 @@ star();
 
 //mouse indicator
 $(document).ready(function(){
+    if( is_mobile === true ) return;
+
     var mousePos = {};
     function getRandomInt(min, max) {
         return Math.round(Math.random() * (max - min + 1)) + min;
@@ -640,11 +650,4 @@ $(document).ready(function(){
         $("<div class='ball dark' style='" + style + "'></div>").appendTo('body').one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){$(this).remove();}); 
       }
     }, 1);
-  });
-
-  window.addEventListener('resize', function() {
-    if( window.innerHeight > window.innerWidth )
-        header_bg_img.classList.add('resize');
-    else
-        header_bg_img.classList.remove('resize');
   });
