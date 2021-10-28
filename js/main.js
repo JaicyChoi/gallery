@@ -255,6 +255,15 @@ close_btn.addEventListener('click', () => {
     mobile_nav_wrapper.classList.remove('show');
     mobile_menu.classList.remove('show')
 });
+mobile_menu_li[0].addEventListener('click', () => {
+    move_works = false;
+    current_position = 'header';
+    header.classList.remove('hide');
+    document.querySelector('header').scrollIntoView({behavior:'smooth'});
+    document.querySelector('body').classList.add('scrolllock');
+    main_btn_wrapper.classList.remove('show');
+    mobile_nav_wrapper.classList.remove('show');
+});
 mobile_menu_li[1].addEventListener('click', () => {
     document.querySelector('body').classList.add('scrolllock');
     document.querySelector('header').classList.add('scrolllock');

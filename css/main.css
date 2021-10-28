@@ -315,7 +315,6 @@ header.scrolllock{
     background-size: cover;
     width: 37px;
     height: 37px;
-    top: -25px;
 }
 .mobile_menu li.dark:nth-child(1):after{
     background: url(../img/icon/main_mobile_dark.png) no-repeat center;
