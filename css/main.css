@@ -647,6 +647,7 @@ header.scrolllock{
    color: #298200;
 }
 .selected_dark{
+    font-weight: bold;
    color: #eb4444;
 }
 .classification_list li:last-child{

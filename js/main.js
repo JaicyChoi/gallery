@@ -98,8 +98,8 @@ setTimeout( () => { title.classList.add('show'); }, 3000);
 
 list_all.classList.add('show');
 let classification_list_after = document.head.appendChild(document.createElement('style'));
-classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
-classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #eb4444; box-sizing: border-box; }';
+classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #eb4444; box-sizing: border-box; }';
 
 //mode controll
 let header_title_bg_before = document.head.appendChild(document.createElement('style'));
@@ -135,7 +135,7 @@ function dark_mode_on(){
     header_title_bg_before.innerHTML = '.header_title_bg:before{ content: ""; position: absolute; top: 10px; left: -15px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_dark 1.3s linear forwards; animation-delay: 1s; }';
     header_title_bg_after.innerHTML = '.header_title_bg:after{ content: ""; position: absolute; top: -15px; left: 10px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_2_dark 1.3s linear forwards; animation-delay: 2.3s; }';
     classification_list[list_selected-1].classList.add('selected_dark');
-    classification_list_after.innerHTML = '.classification_list li:nth-child('+ list_selected +'):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+    classification_list_after.innerHTML = '.classification_list li:nth-child('+ list_selected +'):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #eb4444; box-sizing: border-box; }';
     classification_list.forEach( li => li.classList.add('dark') );
     classification_list.forEach( li => li.classList.remove('selected') );
 }
@@ -194,7 +194,7 @@ light.addEventListener('click', () => {
     header_title_bg_before.innerHTML = '.header_title_bg:before{ content: ""; position: absolute; top: 10px; left: -15px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line 1.3s linear forwards; animation-delay: 1s; }';
     header_title_bg_after.innerHTML = '.header_title_bg:after{ content: ""; position: absolute; top: -15px; left: 10px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_2 1.3s linear forwards; animation-delay: 2.3s; }';
     classification_list[list_selected-1].classList.add('selected');
-    classification_list_after.innerHTML = '.classification_list li:nth-child('+ list_selected +'):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    classification_list_after.innerHTML = '.classification_list li:nth-child('+ list_selected +'):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #298200; box-sizing: border-box; }';
     classification_list.forEach( li => li.classList.remove('dark') );
     classification_list.forEach( li => li.classList.remove('selected_dark') );
 });
@@ -231,7 +231,7 @@ contents_change_light_mode.addEventListener('click', () => {
     header_title_bg_before.innerHTML = '.header_title_bg:before{ content: ""; position: absolute; top: 10px; left: -15px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line 1.3s linear forwards; animation-delay: 1s; }';
     header_title_bg_after.innerHTML = '.header_title_bg:after{ content: ""; position: absolute; top: -15px; left: 10px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_2 1.3s linear forwards; animation-delay: 2.3s; }';
     classification_list[list_selected-1].classList.add('selected');
-    classification_list_after.innerHTML = '.classification_list li:nth-child('+ list_selected +'):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    classification_list_after.innerHTML = '.classification_list li:nth-child('+ list_selected +'):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #298200; box-sizing: border-box; }';
     classification_list.forEach( li => li.classList.remove('dark') );
     classification_list.forEach( li => li.classList.remove('selected_dark') );
 });
@@ -404,14 +404,14 @@ classification_list[0].addEventListener('click', ()=>{
         classification_list[1].classList.remove('selected');
         classification_list[2].classList.remove('selected');
         classification_list[3].classList.remove('selected');
-        classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+        classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #298200; box-sizing: border-box; }';
     }   
     else{
         classification_list[0].classList.add('selected_dark');
         classification_list[1].classList.remove('selected_dark');
         classification_list[2].classList.remove('selected_dark');
         classification_list[3].classList.remove('selected_dark');
-        classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+        classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #eb4444; box-sizing: border-box; }';
     }
     total.innerHTML = 'Total : ' + all_cnt;
     // set_star_animation();
@@ -427,14 +427,14 @@ classification_list[1].addEventListener('click', ()=>{
         classification_list[1].classList.add('selected');
         classification_list[2].classList.remove('selected');
         classification_list[3].classList.remove('selected');
-        classification_list_after.innerHTML = '.classification_list li:nth-child(2):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+        classification_list_after.innerHTML = '.classification_list li:nth-child(2):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #298200; box-sizing: border-box; }';
     }
     else{
         classification_list[0].classList.remove('selected_dark');
         classification_list[1].classList.add('selected_dark');
         classification_list[2].classList.remove('selected_dark');
         classification_list[3].classList.remove('selected_dark');
-        classification_list_after.innerHTML = '.classification_list li:nth-child(2):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+        classification_list_after.innerHTML = '.classification_list li:nth-child(2):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #eb4444; box-sizing: border-box; }';
     }
     total.innerHTML = 'Total : ' + ld_cnt;
     // set_star_animation();
@@ -450,14 +450,14 @@ classification_list[2].addEventListener('click', ()=>{
         classification_list[1].classList.remove('selected');
         classification_list[2].classList.add('selected');
         classification_list[3].classList.remove('selected');
-        classification_list_after.innerHTML = '.classification_list li:nth-child(3):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+        classification_list_after.innerHTML = '.classification_list li:nth-child(3):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #298200; box-sizing: border-box; }';
     }
     else{
         classification_list[0].classList.remove('selected_dark');
         classification_list[1].classList.remove('selected_dark');
         classification_list[2].classList.add('selected_dark');
         classification_list[3].classList.remove('selected_dark');
-        classification_list_after.innerHTML = '.classification_list li:nth-child(3):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+        classification_list_after.innerHTML = '.classification_list li:nth-child(3):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #eb4444; box-sizing: border-box; }';
     }
     total.innerHTML = 'Total : ' + sd_cnt;
     // set_star_animation();
@@ -473,14 +473,14 @@ classification_list[3].addEventListener('click', ()=>{
         classification_list[1].classList.remove('selected');
         classification_list[2].classList.remove('selected');
         classification_list[3].classList.add('selected');
-        classification_list_after.innerHTML = '.classification_list li:nth-child(4):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+        classification_list_after.innerHTML = '.classification_list li:nth-child(4):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #298200; box-sizing: border-box; }';
     }
     else{
         classification_list[0].classList.remove('selected_dark');
         classification_list[1].classList.remove('selected_dark');
         classification_list[2].classList.remove('selected_dark');
         classification_list[3].classList.add('selected_dark');
-        classification_list_after.innerHTML = '.classification_list li:nth-child(4):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #eb4444; box-sizing: border-box; }';
+        classification_list_after.innerHTML = '.classification_list li:nth-child(4):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #eb4444; box-sizing: border-box; }';
     }    
     total.innerHTML = 'Total : ' + all_etc_cnt;
     // set_star_animation();
