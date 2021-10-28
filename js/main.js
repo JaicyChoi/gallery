@@ -260,9 +260,9 @@ mobile_menu_li[0].addEventListener('click', () => {
     current_position = 'header';
     header.classList.remove('hide');
     document.querySelector('header').scrollIntoView({behavior:'smooth'});
-    document.querySelector('body').classList.add('scrolllock');
     main_btn_wrapper.classList.remove('show');
     mobile_nav_wrapper.classList.remove('show');
+    document.querySelector('body').classList.add('scrolllock');
 });
 mobile_menu_li[1].addEventListener('click', () => {
     document.querySelector('body').classList.add('scrolllock');
