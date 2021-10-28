@@ -236,7 +236,7 @@ header.scrolllock{
 /*     border: 1.5px solid #ff4242; */
 }
 .menu_icon.hide{
-    z-index: -2;
+    z-index: 1;
 }
 .mobile_nav_wrapper{
     position: fixed;

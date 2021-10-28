@@ -547,6 +547,7 @@ artworks.forEach( img => img.addEventListener('click', () => {
     dark_bg.classList.add('show');
     return_works.classList.add('show');
     return_bg.classList.add('show');
+    menu_icon.classList.add('hide');
 }));
 //need fixing
 artworks_each.forEach( img => img.addEventListener('mouseover', () => {
@@ -567,6 +568,7 @@ function return_gallery(){
     view_img_box.removeChild(view_img_box.children[0]);
     view_image_wrapper.classList.remove('show');
     return_bg.classList.remove('show');
+    menu_icon.classList.remove('hide');
 }
 
 //random star background
