@@ -315,6 +315,7 @@ header.scrolllock{
     background-size: cover;
     width: 37px;
     height: 37px;
+    top: -25px;
 }
 .mobile_menu li.dark:nth-child(1):after{
     background: url(../img/icon/main_mobile_dark.png) no-repeat center;
@@ -333,10 +334,12 @@ header.scrolllock{
 .mobile_menu li:nth-child(4):after{
     background: url(../img/blog.png) no-repeat center;
     background-size: cover;
+    top: -25px;
 }
 .mobile_menu li:nth-child(5):after{
     background: url(../img/contact.png) no-repeat center;
     background-size: cover;
+    top: -25px;
 }
 .mobile_menu li.dark:nth-child(2):after{
     background: url(../img/about_dark.png) no-repeat center;
@@ -357,6 +360,7 @@ header.scrolllock{
 .mobile_menu li a{
     text-decoration: none;
     color: white;
+    display: block;
 }
 .mobile_menu li.dark a{
     color: black;
