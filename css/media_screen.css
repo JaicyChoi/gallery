@@ -5,7 +5,7 @@
     .return{
         width: 97%;
     }
-    .classification_wrapper, .works_wrapper{
+    .classification_wrapper, .works_wrapper, .main_btn_inner_wrapper{
         width: 100%;
     }
     .total, .footer_wrapper{
@@ -19,11 +19,17 @@
         width: 310px;
         height: 330px;
     }
-    .top_btn_wrapper, .main_btn_wrapper, .return_works{
+    .top_btn_wrapper, .return_works{
         width: 95%;
     }
     .view_img{
         width: 90%;
+    }
+    .contents_logo{
+        left: 20px;
+    }
+    .contents_change_mode{
+        margin-left: 40px;
     }
 }
 @media screen and (max-width:980px){
@@ -60,7 +66,7 @@
         font-size: 2.25em;
     }
     .classification_list{
-        margin: 66px 0 80px;
+        margin: 85px 0 80px;
     }
     .works_list{
         row-gap: 40px;
@@ -133,7 +139,7 @@
     .works{
         margin-bottom: 100px;
     }
-    .main_btn, .top_btn{
+    .top_btn{
         width: 45px;
         height: 45px;
         background-size: 30px;
@@ -154,19 +160,22 @@
     .top_btn_wrapper.show{
         bottom: 120px;
     }
-    .main_btn_wrapper{
-        top: 45px;
-    }
     .work_date{
         font-size: 1em;
     }
     .return_arrow2{
         height: 45px;
     }
+    .contents_logo{
+        width: 45px;
+        height: 45px;
+        font-size: 2.5em;
+    }
 }
 @media screen and (max-width:620px){
     .logo{
-        margin-top: 28px;
+        margin-top: 10px;
+        margin-left: 10px;
     }
     .pc_nav{
         margin-top: 28px;
@@ -175,7 +184,7 @@
         font-size:  0.875em;
         display: none;
     }
-    .mobile_nav{
+    .menu_icon{
         display: block;
     }
     .main_menu li{
@@ -194,6 +203,12 @@
         bottom: 30px;
     }
     .change_mode{
+        width: 130px;
+        height: 33px;
+        font-size: 0.9375em;
+    }
+    .contents_change_mode{
+        margin-left: 35px;
         width: 130px;
         height: 33px;
         font-size: 0.9375em;
@@ -225,13 +240,15 @@
         width: 30px;
         height: 30px;
     }
-    .main_btn, .top_btn{
+    .top_btn{
         width: 43px;
         height: 43px;
         background-size: 28px;
     }
-    .main_btn_wrapper{
-        top: 40px;
+    .logo, .contents_logo{
+        width: 43px;
+        height: 43px;
+        font-size: 2.375em;
     }
     .top_btn_wrapper.show{
         bottom: 110px;
@@ -260,8 +277,14 @@
         height: 30px;
         font-size: 0.875em;
     }
+    .contents_change_mode{
+        margin-left: 33px;
+        width: 110px;
+        height: 28px;
+        font-size: 0.84375em;
+    }
     .classification_list{
-        margin: 50px 0 60px;
+        margin: 70px 0 50px;
     }
     .classification_list, .total{
         font-size: 0.75em;
@@ -296,13 +319,18 @@
         width: 25px;
         height: 25px;
     }
-    .main_btn, .top_btn{
+    .top_btn{
         width: 38px;
         height: 38px;
         background-size: 25px;
     }
-    .main_btn_wrapper{
-        top: 30px;
+    .contents_logo{
+        width: 38px;
+        height: 38px;
+        font-size: 2.25em;
+    }
+    .main_btn_inner_wrapper{
+        padding: 5px;
     }
     .top_btn_wrapper.show{
         bottom: 100px;

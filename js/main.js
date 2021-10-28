@@ -5,17 +5,23 @@ const header = document.querySelector('header');
 const header_bg_img = document.querySelector('.header_bg_img');
 const logo = document.querySelector('.logo>a');
 const logo_bg = document.querySelector('.logo_bg');
+const contents_logo = document.querySelector('.contents_logo>a');
+const contents_logo_bg = document.querySelector('.contents_logo_bg');
 const pc_nav = document.querySelector('.pc_nav');
 const main_menu = document.querySelectorAll('.main_menu>li');
 const menu_icon = document.querySelector('.menu_icon');
+const mobile_nav_wrapper = document.querySelector('.mobile_nav_wrapper');
 const mobile_menu = document.querySelector('.mobile_menu');
 const mobile_menu_li = document.querySelectorAll('.mobile_menu>li');
+const close_btn = document.querySelector('.close_btn');
 const header_title = document.querySelector('.header_title');
 const header_title_bg = document.querySelector('.header_title_bg');
 const title = document.querySelector('.header_title_bg>p');
 const change_mode = document.querySelector('.change_mode');
 const dark = document.querySelector('.dark_mode');
 const light = document.querySelector('.light_mode');
+const contents_change_dark_mode = document.querySelector('.contents_change_dark_mode');
+const contents_change_light_mode = document.querySelector('.contents_change_light_mode');
 const about_wrapper = document.querySelector('.about_wrapper');
 const about = document.querySelector('.about');
 const about_text_box = document.querySelector('.text_box');
@@ -30,7 +36,7 @@ const list_etc = document.querySelector('.etc');
 const top_btn_wrapper = document.querySelector('.top_btn_wrapper');
 const main_btn_wrapper = document.querySelector('.main_btn_wrapper');
 const top_btn = document.querySelector('.top_btn');
-const main_btn = document.querySelector('.main_btn');
+// const main_btn = document.querySelector('.main_btn');
 const footer = document.querySelector('footer');
 let styleEle = document.createElement('style');
 styleEle.id = "keyset";
@@ -39,7 +45,7 @@ let total = document.querySelector('.total');
 let ld_cnt = 10;
 let sd_cnt = 6;
 let etc_cnt = 8;
-let etc_cnt2 = 3;
+let etc_cnt2 = 4;
 let gif_cnt = 2;
 let all_etc_cnt = etc_cnt + etc_cnt2 + gif_cnt;
 let all_cnt = ld_cnt + sd_cnt + etc_cnt + etc_cnt2 + gif_cnt;
@@ -48,6 +54,7 @@ let list_selected = 1;
 let current_position = 'header';
 let last_animation = 0;
 const animation_interval = 1000;
+let move_works = false;
 
 document.querySelector('body').classList.add('scrolllock');
 // document.addEventListener('mousewheel', function(event){
@@ -66,9 +73,16 @@ document.querySelector('body').classList.add('scrolllock');
 //     last_animation = realtime;
 // });
 
+if( window.innerHeight > window.innerWidth )
+        header_bg_img.classList.add('resize');
+    else
+        header_bg_img.classList.remove('resize');
+
 //logo rotate animation
 logo.addEventListener('mouseenter', () => { logo_bg.classList.add('rotate'); });
 logo.addEventListener('mouseleave', () => { logo_bg.classList.remove('rotate'); });
+contents_logo.addEventListener('mouseenter', () => { contents_logo_bg.classList.add('rotate'); });
+contents_logo.addEventListener('mouseleave', () => { contents_logo_bg.classList.remove('rotate'); });
 
 //header animation
 setTimeout( () => { pc_nav.classList.add('show'); }, 5000);
@@ -89,13 +103,18 @@ header_bg_img.classList.add('dark');
 function dark_mode_on(){
     current_mode = 'dark';
     light.classList.add('show');
+    contents_change_light_mode.classList.add('show');
     header.classList.add('dark');
     logo.classList.add('dark');
     logo_bg.classList.add('dark');
+    contents_logo.classList.add('dark');
+    contents_logo_bg.classList.add('dark');
     pc_nav.classList.add('dark');
     menu_icon.classList.add('dark');
     mobile_menu.classList.add('dark');
     mobile_menu_li.forEach( li => li.classList.add('dark') );
+    close_btn.classList.add('dark');
+    main_btn_wrapper.classList.add('dark');
     header_title_bg.classList.add('dark');
     title.classList.add('dark');
     about_text_box.classList.add('dark');
@@ -103,7 +122,7 @@ function dark_mode_on(){
     classification_list_all.classList.add('dark');
     total.classList.add('dark');
     top_btn.classList.add('dark');
-    main_btn.classList.add('dark');
+    // main_btn.classList.add('dark');
     footer.classList.add('dark');    
     header_title_bg_before.innerHTML = '.header_title_bg:before{ content: ""; position: absolute; top: 10px; left: -15px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_dark 1.3s linear forwards; animation-delay: 1s; }';
     header_title_bg_after.innerHTML = '.header_title_bg:after{ content: ""; position: absolute; top: -15px; left: 10px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_2_dark 1.3s linear forwards; animation-delay: 2.3s; }';
@@ -123,20 +142,37 @@ dark.addEventListener('click', () => {
 
     artworks.forEach( img => img.classList.add('dark') );
 });
+contents_change_dark_mode.addEventListener('click', () => {
+    dark_mode_on();
+    if( current_mode === 'dark' )
+        header_bg_img.classList.add('dark2');
+
+    dark.classList.remove('show');
+    contents_change_dark_mode.classList.remove('show');
+    document.querySelectorAll('.star_light').forEach( star => star.className = 'star');
+
+    artworks.forEach( img => img.classList.add('dark') );
+});
 light.addEventListener('click', () => {
     current_mode = 'light';
     document.querySelectorAll('.star').forEach( star => star.className = 'star_light');
     dark.classList.add('show');
     light.classList.remove('show');
+    contents_change_dark_mode.classList.add('show');
+    contents_change_light_mode.classList.remove('show');
     header.classList.remove('dark');
     header_bg_img.classList.remove('dark');
     header_bg_img.classList.remove('dark2');
     logo.classList.remove('dark');
     logo_bg.classList.remove('dark');
+    contents_logo.classList.remove('dark');
+    contents_logo_bg.classList.remove('dark');
     pc_nav.classList.remove('dark');
     menu_icon.classList.remove('dark');
     mobile_menu.classList.remove('dark');
     mobile_menu_li.forEach( li => li.classList.remove('dark') );
+    close_btn.classList.remove('dark');
+    main_btn_wrapper.classList.remove('dark');
     header_title_bg.classList.remove('dark');
     title.classList.remove('dark');
     about_text_box.classList.remove('dark');
@@ -145,7 +181,44 @@ light.addEventListener('click', () => {
     total.classList.remove('dark');
     artworks.forEach( img => img.classList.remove('dark') );
     top_btn.classList.remove('dark');
-    main_btn.classList.remove('dark');
+    // main_btn.classList.remove('dark');
+    footer.classList.remove('dark');
+    header_title_bg_before.innerHTML = '.header_title_bg:before{ content: ""; position: absolute; top: 10px; left: -15px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line 1.3s linear forwards; animation-delay: 1s; }';
+    header_title_bg_after.innerHTML = '.header_title_bg:after{ content: ""; position: absolute; top: -15px; left: 10px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_2 1.3s linear forwards; animation-delay: 2.3s; }';
+    classification_list[list_selected-1].classList.add('selected');
+    classification_list_after.innerHTML = '.classification_list li:nth-child('+ list_selected +'):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border: 2px solid #298200; box-sizing: border-box; }';
+    classification_list.forEach( li => li.classList.remove('dark') );
+    classification_list.forEach( li => li.classList.remove('selected_dark') );
+});
+contents_change_light_mode.addEventListener('click', () => {
+    current_mode = 'light';
+    document.querySelectorAll('.star').forEach( star => star.className = 'star_light');
+    dark.classList.add('show');
+    light.classList.remove('show');
+    contents_change_dark_mode.classList.add('show');
+    contents_change_light_mode.classList.remove('show');
+    header.classList.remove('dark');
+    header_bg_img.classList.remove('dark');
+    header_bg_img.classList.remove('dark2');
+    logo.classList.remove('dark');
+    logo_bg.classList.remove('dark');
+    contents_logo.classList.remove('dark');
+    contents_logo_bg.classList.remove('dark');
+    pc_nav.classList.remove('dark');
+    menu_icon.classList.remove('dark');
+    mobile_menu.classList.remove('dark');
+    mobile_menu_li.forEach( li => li.classList.remove('dark') );
+    close_btn.classList.remove('dark');
+    main_btn_wrapper.classList.remove('dark');
+    header_title_bg.classList.remove('dark');
+    title.classList.remove('dark');
+    about_text_box.classList.remove('dark');
+    contents.classList.remove('dark');
+    classification_list_all.classList.remove('dark');
+    total.classList.remove('dark');
+    artworks.forEach( img => img.classList.remove('dark') );
+    top_btn.classList.remove('dark');
+    // main_btn.classList.remove('dark');
     footer.classList.remove('dark');
     header_title_bg_before.innerHTML = '.header_title_bg:before{ content: ""; position: absolute; top: 10px; left: -15px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line 1.3s linear forwards; animation-delay: 1s; }';
     header_title_bg_after.innerHTML = '.header_title_bg:after{ content: ""; position: absolute; top: -15px; left: 10px; width: 0; height: 0; background: transparent; border: 2px solid transparent; animation: title_line_2 1.3s linear forwards; animation-delay: 2.3s; }';
@@ -165,7 +238,35 @@ main_menu.forEach( li => li.addEventListener('mouseenter', ()=>{
 
 //mobile nav controll
 menu_icon.addEventListener('click', () => {
+    document.querySelector('body').classList.add('scrolllock');
+    mobile_nav_wrapper.classList.add('show');
     mobile_menu.classList.add('show');
+});
+close_btn.addEventListener('click', () => {
+    document.querySelector('body').classList.remove('scrolllock');
+    mobile_nav_wrapper.classList.remove('show');
+    mobile_menu.classList.remove('show')
+});
+mobile_menu_li[1].addEventListener('click', () => {
+    document.querySelector('body').classList.add('scrolllock');
+    document.querySelector('header').classList.add('scrolllock');
+    pc_nav.classList.remove('show');
+    header_title.classList.add('hide');
+    about_wrapper.classList.add('show');
+    about.classList.add('show');
+    change_mode.classList.add('hide');
+    mobile_nav_wrapper.classList.remove('show');
+    menu_icon.classList.add('hide');
+    main_btn_wrapper.classList.remove('show');
+});
+mobile_menu_li[2].addEventListener('click', () => {
+    move_works = true;
+    current_position = 'contents';
+    header.classList.add('hide');
+    contents.scrollIntoView({behavior:'smooth'});
+    document.querySelector('body').classList.remove('scrolllock');
+    main_btn_wrapper.classList.add('show');
+    mobile_nav_wrapper.classList.remove('show');
 });
 
 
@@ -187,6 +288,9 @@ return_arrow.addEventListener('click', () => {
     about_wrapper.classList.remove('show');
     about.classList.remove('show');
     change_mode.classList.remove('hide');
+    menu_icon.classList.remove('hide');
+    if( move_works === true )
+        main_btn_wrapper.classList.add('show');
 });
 
 //go works
@@ -390,13 +494,13 @@ top_btn.addEventListener('click', function(){
     contents.scrollIntoView({behavior:'smooth'});
 });
 
-main_btn.addEventListener('click', function(){
-    current_position = 'header';
-    header.classList.remove('hide');
-    document.querySelector('header').scrollIntoView({behavior:'smooth'});
-    document.querySelector('body').classList.add('scrolllock');
-    main_btn_wrapper.classList.remove('show');
-});
+// main_btn.addEventListener('click', function(){
+//     current_position = 'header';
+//     header.classList.remove('hide');
+//     document.querySelector('header').scrollIntoView({behavior:'smooth'});
+//     document.querySelector('body').classList.add('scrolllock');
+//     main_btn_wrapper.classList.remove('show');
+// });
 
 //view images
 const view_image_wrapper = document.querySelector('.view_image_wrapper');
@@ -536,4 +640,11 @@ $(document).ready(function(){
         $("<div class='ball dark' style='" + style + "'></div>").appendTo('body').one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){$(this).remove();}); 
       }
     }, 1);
+  });
+
+  window.addEventListener('resize', function() {
+    if( window.innerHeight > window.innerWidth )
+        header_bg_img.classList.add('resize');
+    else
+        header_bg_img.classList.remove('resize');
   });
