@@ -32,15 +32,15 @@ header{
 /*     overflow: hidden; */
     background-color: #B7EF9D;
 }
+header.scrolllock{
+    height: 100vh;
+}
 header.hide{
     height: 0;
 }
 header.dark{
     background: rgb(0,0,0);
     background: linear-gradient(360deg, rgba(0,0,0,1) 0%, rgb(24 0 0) 55%);
-}
-header.scrolllock{
-    height: 100vh;
 }
 .header_bg_img{
     position: absolute;
@@ -236,7 +236,7 @@ header.scrolllock{
 /*     border: 1.5px solid #ff4242; */
 }
 .menu_icon.hide{
-    z-index: 1;
+    z-index: -1;
 }
 .mobile_nav_wrapper{
     position: fixed;
