@@ -227,7 +227,7 @@ mobile_menu_li[0].addEventListener('click', () => {
     header.classList.remove('hide');
     document.querySelector('header').scrollIntoView({behavior:'smooth'});
     main_btn_wrapper.classList.remove('show');
-    mobile_nav_wrapper.classList.remove('show');
+    // mobile_nav_wrapper.classList.remove('show');
     document.querySelector('body').classList.add('scrolllock');
 });
 mobile_menu_li[1].addEventListener('click', () => {
