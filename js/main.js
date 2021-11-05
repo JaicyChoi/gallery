@@ -117,7 +117,7 @@ let header_title_bg_after = document.head.appendChild(document.createElement('st
 // dark_mode_on();
 // header_bg_img.classList.add('dark');
 dark.classList.add('show');
-contents_change_dark_mode.classList.add('show')
+contents_change_dark_mode.classList.add('show');
 
 function dark_mode_on(){
     current_mode = 'dark';
@@ -562,7 +562,7 @@ function star(){
     let generate_star = 0;
     for( let cnt = 500 ; generate_star < cnt ; generate_star++ ){
         let star = document.createElement('div');
-        star.classList.add('star');
+        star.classList.add('star_light');
 
         let x = Math.floor( Math.random() * window.innerWidth );
         let size = Math.random() * 2;
@@ -592,11 +592,11 @@ function set_star_animation(){
             opacity: 0;
             ransform: translateY(0);
         }
-    .star{
+    .star_light{
         position: absolute;
         bottom: 0;
         animation: starAnimate linear infinite;
-        background-color: white;
+        background-color: green;
         opacity: 0;
     }
     `;
