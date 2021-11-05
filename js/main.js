@@ -49,7 +49,7 @@ let etc_cnt2 = 4;
 let gif_cnt = 2;
 let all_etc_cnt = etc_cnt + etc_cnt2 + gif_cnt;
 let all_cnt = ld_cnt + sd_cnt + etc_cnt + etc_cnt2 + gif_cnt;
-let current_mode = 'dark';
+let current_mode = 'light';
 let list_selected = 1;
 let current_position = 'header';
 let last_animation = 0;
@@ -98,15 +98,17 @@ setTimeout( () => { title.classList.add('show'); }, 3000);
 
 list_all.classList.add('show');
 let classification_list_after = document.head.appendChild(document.createElement('style'));
-classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #eb4444; box-sizing: border-box; }';
-classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #eb4444; box-sizing: border-box; }';
+classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #298200; box-sizing: border-box; }';
+classification_list_after.innerHTML = '.classification_list li:nth-child(1):after{ content: ""; position: absolute; width: 100%; left: 0; bottom: -10px; border-bottom: 3px solid #298200; box-sizing: border-box; }';
 
 //mode controll
 let header_title_bg_before = document.head.appendChild(document.createElement('style'));
 let header_title_bg_after = document.head.appendChild(document.createElement('style'));
 
-dark_mode_on();
-header_bg_img.classList.add('dark');
+// dark_mode_on();
+// header_bg_img.classList.add('dark');
+dark.classList.add('show');
+contents_change_dark_mode.classList.add('show')
 
 function dark_mode_on(){
     current_mode = 'dark';
@@ -306,7 +308,7 @@ function count_ld(list){
     for( let i = ld_cnt ; i > 0 ; i-- ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
-        img_box.classList.add('dark');
+        // img_box.classList.add('dark');
     
         let img = document.createElement('img');
         img.src='img/ld/ld'+ i +'.png';
@@ -321,7 +323,7 @@ function count_sd(list){
     for( let i = sd_cnt ; i > 0 ; i-- ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
-        img_box.classList.add('dark');
+        // img_box.classList.add('dark');
     
         let img = document.createElement('img');
         img.src='img/sd/sd'+ i +'.png';
@@ -336,7 +338,7 @@ function count_etc(list){
     for( let i = etc_cnt + gif_cnt + etc_cnt2 ; i >= etc_cnt + gif_cnt + 1 ; i-- ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
-        img_box.classList.add('dark');
+        // img_box.classList.add('dark');
     
         let img = document.createElement('img');
         img.src='img/etc/etc'+ i+'.png';
@@ -349,7 +351,7 @@ function count_etc(list){
     for( let i = etc_cnt + gif_cnt ; i >= etc_cnt + 1 ; i-- ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
-        img_box.classList.add('dark');
+        // img_box.classList.add('dark');
     
         let img = document.createElement('img');
         img.src='img/etc/etc'+ i+'.gif';
@@ -362,7 +364,7 @@ function count_etc(list){
     for( let i = etc_cnt ; i > 0; i-- ){
         let img_box = document.createElement('div');
         img_box.classList.add('img_box');
-        img_box.classList.add('dark');
+        // img_box.classList.add('dark');
     
         let img = document.createElement('img');
         img.src='img/etc/etc'+ i +'.png';
