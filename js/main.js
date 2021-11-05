@@ -228,7 +228,8 @@ menu_icon.addEventListener('click', () => {
     mobile_menu.classList.add('show');
 });
 close_btn.addEventListener('click', () => {
-    document.querySelector('body').classList.remove('scrolllock');
+    if( current_position !== 'header' )
+        document.querySelector('body').classList.remove('scrolllock');
     mobile_nav_wrapper.classList.remove('show');
     mobile_menu.classList.remove('show')
 });
