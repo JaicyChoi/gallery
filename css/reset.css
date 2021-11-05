@@ -42,7 +42,7 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
-*:before. *:after{
+*:before, *:after{
 	margin: 0;
 	padding: 00;
 	box-sizing: border-box;
