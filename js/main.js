@@ -91,6 +91,15 @@ logo.addEventListener('mouseenter', () => { logo_bg.classList.add('rotate'); });
 logo.addEventListener('mouseleave', () => { logo_bg.classList.remove('rotate'); });
 contents_logo.addEventListener('mouseenter', () => { contents_logo_bg.classList.add('rotate'); });
 contents_logo.addEventListener('mouseleave', () => { contents_logo_bg.classList.remove('rotate'); });
+contents_logo.addEventListener('click', () => {
+    move_works = false;
+    current_position = 'header';
+    header.classList.remove('hide');
+    document.querySelector('header').scrollIntoView({behavior:'smooth'});
+    main_btn_wrapper.classList.remove('show');
+    mobile_nav_wrapper.classList.remove('show');
+    document.querySelector('body').classList.add('scrolllock');
+});
 
 //header animation
 setTimeout( () => { pc_nav.classList.add('show'); }, 5000);
