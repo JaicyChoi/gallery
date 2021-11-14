@@ -42,7 +42,7 @@ let styleEle = document.createElement('style');
 styleEle.id = "keyset";
 document.head.appendChild(styleEle);
 let total = document.querySelector('.total');
-let ld_cnt = 10;
+let ld_cnt = 11;
 let sd_cnt = 7;
 let etc_cnt = 8;
 let etc_cnt2 = 4;

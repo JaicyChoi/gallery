@@ -587,6 +587,7 @@ header.dark{
     float: left;
     font-size: 2.875em;
     line-height: 1.2em;
+    width: 100%;
 }
 .return{
     position: absolute;
