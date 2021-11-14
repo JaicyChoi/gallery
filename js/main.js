@@ -43,7 +43,7 @@ styleEle.id = "keyset";
 document.head.appendChild(styleEle);
 let total = document.querySelector('.total');
 let ld_cnt = 10;
-let sd_cnt = 6;
+let sd_cnt = 7;
 let etc_cnt = 8;
 let etc_cnt2 = 4;
 let gif_cnt = 2;
