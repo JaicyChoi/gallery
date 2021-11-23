@@ -710,6 +710,7 @@ header.dark{
     overflow: hidden;
     cursor: pointer;
     transition: all .3s ease;
+    background-color: #dfdfdf;
 }
 .img_box.dark{
     border: 1.5px solid #ef9d9d;
